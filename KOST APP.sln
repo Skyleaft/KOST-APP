@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KOST APP", "KOST APP\KOST APP.csproj", "{9122D4A9-08B3-4891-A917-5D3BB80384BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9122D4A9-08B3-4891-A917-5D3BB80384BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9122D4A9-08B3-4891-A917-5D3BB80384BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9122D4A9-08B3-4891-A917-5D3BB80384BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9122D4A9-08B3-4891-A917-5D3BB80384BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECBF1929-F436-4B30-9353-AAF0D9C7C197}
+	EndGlobalSection
+EndGlobal
