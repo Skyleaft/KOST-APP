@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,33 @@ namespace KOST_APP
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private async void HamburgerMenu_OnOptionsItemClick(object sender, ItemClickEventArgs e)
+        {
+            var menuItem = e.ClickedItem as HamburgerMenuItem;
+            if (menuItem.Label == "Logout")
+            {
+                var login = new Window_Login();
+                this.Close();
+
+                login.Show();
+            }
+        }
+
+        private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
+        {
+            if (!e.IsItemOptions && this.HamburgerMenuControl.IsPaneOpen)
+            {
+                // close the menu if a item was selected
+                // this.HamburgerMenuControl.IsPaneOpen = false;
+            }
         }
     }
 }
