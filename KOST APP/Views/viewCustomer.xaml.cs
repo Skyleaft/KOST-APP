@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,7 +56,20 @@ namespace KOST_APP.Views
 
         private void lv_customer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (lv_customer.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)lv_customer.SelectedItem;
+                string index = dataRow.Row[0].ToString();
 
+                k.sql = "select *from customer  where id_customer = '" + index + "'";
+                k.setdt();
+
+                String idcust = k.dt.Rows[0][0].ToString();
+
+                var showdialog = new dialogOpenCustomer(idcust);
+                DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+
+            }
         }
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
@@ -66,7 +80,12 @@ namespace KOST_APP.Views
         private void btn_tambah_Click(object sender, RoutedEventArgs e)
         {
             var showdialog = new dialogTambahCustomer();
-            DialogHost.Show(showdialog, "MainDialog");
+            DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+        }
+
+        private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            showdata();
         }
     }
 }

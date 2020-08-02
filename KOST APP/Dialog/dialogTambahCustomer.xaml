@@ -67,7 +67,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
                             Foreground="{Binding BorderBrush, ElementName=txt_nama}"
-                            Kind="NotesMedicalSolid" />
+                            Kind="UserAltSolid" />
                         <TextBox
                             x:Name="txt_nama"
                             Width="300"
@@ -128,8 +128,8 @@
                         VerticalAlignment="Top"
                         Orientation="Horizontal">
                         <iconPacks:PackIconFontAwesome
-                            Width="25"
-                            Height="25"
+                            Width="22"
+                            Height="22"
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
@@ -150,8 +150,8 @@
                         VerticalAlignment="Top"
                         Orientation="Horizontal">
                         <iconPacks:PackIconFontAwesome
-                            Width="25"
-                            Height="25"
+                            Width="22"
+                            Height="22"
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
@@ -172,8 +172,8 @@
                         VerticalAlignment="Top"
                         Orientation="Horizontal">
                         <materialDesign:PackIcon
-                            Width="25"
-                            Height="25"
+                            Width="22"
+                            Height="22"
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
@@ -199,8 +199,8 @@
                         DockPanel.Dock="Top"
                         Orientation="Horizontal">
                         <iconPacks:PackIconMaterial
-                            Width="25"
-                            Height="25"
+                            Width="22"
+                            Height="22"
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
@@ -231,8 +231,8 @@
                         VerticalAlignment="Top"
                         Orientation="Horizontal">
                         <iconPacks:PackIconMaterial
-                            Width="25"
-                            Height="25"
+                            Width="22"
+                            Height="22"
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"

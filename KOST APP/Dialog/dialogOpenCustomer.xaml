@@ -1,0 +1,407 @@
+﻿<UserControl
+    x:Class="KOST_APP.Dialog.dialogOpenCustomer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:blurry="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:KOST_APP.Dialog"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="500"
+    d:DesignWidth="800"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{materialDesign:MaterialDesignFont}"
+    TextElement.FontSize="14"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    mc:Ignorable="d">
+    <materialDesign:DialogHost Identifier="SubDialogCustomer">
+        <materialDesign:DialogHost>
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        x:Name="Message"
+                        Grid.Row="0"
+                        Margin="0,6,0,0"
+                        FontSize="18">
+                        Yakin Hapus Data : ?
+                    </TextBlock>
+                    <Button
+                        x:Name="btn_yes"
+                        Grid.Row="1"
+                        Margin="16,16,16,0"
+                        HorizontalAlignment="Right"
+                        Click="btn_yes_Click"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        IsDefault="True"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Ya
+                    </Button>
+                    <Button
+                        Grid.Row="1"
+                        Margin="16,16,70,0"
+                        HorizontalAlignment="Right"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        IsDefault="True"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Tidak
+                    </Button>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+            <Grid Width="750" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="9*" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="10,10,0,0"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                    Data Customer
+                </TextBlock>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="0,10,15,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top">
+
+                    <Button
+                        Width="70"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="Batal Login">
+                        <materialDesign:PackIcon
+                            Width="28"
+                            Height="28"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Kind="Close" />
+                    </Button>
+                </StackPanel>
+
+                <DockPanel Grid.Row="1">
+                    <StackPanel Grid.Row="1" Margin="20,10,20,20">
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_nama}"
+                                Kind="UserAltSolid" />
+                            <TextBox
+                                x:Name="txt_nama"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Nama"
+                                FontSize="16"
+                                MaxLength="15" />
+                        </StackPanel>
+
+                        <StackPanel Margin="15,0,15,15" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="4,0,10,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=tgl_lahir}"
+                                Kind="DateRange" />
+                            <DatePicker
+                                x:Name="tgl_lahir"
+                                Width="150"
+                                materialDesign:HintAssist.Hint="Tanggal Lahir"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="#FF747474"
+                                Kind="GenderMaleFemale" />
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton
+                                    x:Name="rb_laki"
+                                    Margin="5,5,0,5"
+                                    Content="Laki - Laki"
+                                    FontSize="14"
+                                    Style="{StaticResource MaterialDesignRadioButton}"
+                                    Tag="True" />
+                                <RadioButton
+                                    x:Name="rb_perempuan"
+                                    Margin="10,5,0,5"
+                                    Content="Perempuan"
+                                    FontSize="14"
+                                    Style="{StaticResource MaterialDesignRadioButton}"
+                                    Tag="True" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_telp}"
+                                Kind="PhoneSolid" />
+                            <TextBox
+                                x:Name="txt_telp"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Telp/No HP"
+                                FontSize="16"
+                                MaxLength="50" />
+
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_asalkota}"
+                                Kind="CitySolid" />
+                            <TextBox
+                                x:Name="txt_asalkota"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Asal Kota"
+                                FontSize="16"
+                                MaxLength="50" />
+
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="23"
+                                Height="23"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_alamat}"
+                                Kind="AddressMarker" />
+                            <TextBox
+                                x:Name="txt_alamat"
+                                Width="300"
+                                Height="60"
+                                MaxWidth="300"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Stretch"
+                                materialDesign:HintAssist.Hint="Alamat Asal"
+                                AcceptsReturn="True"
+                                SpellCheck.IsEnabled="True"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            DockPanel.Dock="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=cmb_pekerjaan}"
+                                Kind="AccountTie" />
+                            <ComboBox
+                                x:Name="cmb_pekerjaan"
+                                Width="auto"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Stretch"
+                                materialDesign:HintAssist.Hint="Pilih Pekerjaan"
+                                IsEditable="False"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem Content="Belum / Tidak Bekerja" />
+                                <ComboBoxItem Content="Mahasiswa / Pelajar" />
+                                <ComboBoxItem Content="Pensiunan" />
+                                <ComboBoxItem Content="Pegawai Negeri Sipil" />
+                                <ComboBoxItem Content="Tentara Nasional Indonesia" />
+                                <ComboBoxItem Content="Kepolisian RI" />
+                                <ComboBoxItem Content="Perdagangan" />
+                                <ComboBoxItem Content="Karyawan Swasta" />
+                                <ComboBoxItem Content="Karyawan BUMN" />
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_instansi}"
+                                Kind="Domain" />
+                            <TextBox
+                                x:Name="txt_instansi"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Nama Instansi"
+                                FontSize="16"
+                                MaxLength="50" />
+
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Grid
+                        x:Name="container"
+                        Margin="0,0,0,15"
+                        HorizontalAlignment="Stretch"
+                        DockPanel.Dock="Left">
+                        <StackPanel>
+                            <Border
+                                Canvas.Left="55"
+                                Canvas.Top="30"
+                                Width="200"
+                                Height="200"
+                                Margin="0,40,0,10"
+                                VerticalAlignment="Top"
+                                BorderBrush="{DynamicResource AccentColorBrush}"
+                                BorderThickness=".5"
+                                CornerRadius="100">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="5"
+                                        Opacity=".5"
+                                        ShadowDepth="3" />
+                                </Border.Effect>
+                                <Border
+                                    Name="ReceiverColor"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="2"
+                                    CornerRadius="100">
+                                    <Grid>
+                                        <Border
+                                            Name="Mask"
+                                            Background="White"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            BorderThickness=".5"
+                                            CornerRadius="100" />
+                                        <StackPanel>
+                                            <Image
+                                                Name="img_foto"
+                                                Width="{Binding ActualWidth, ElementName=Mask}"
+                                                Height="{Binding ActualHeight, ElementName=Mask}"
+                                                RenderOptions.BitmapScalingMode="Fant"
+                                                Stretch="UniformToFill" />
+                                            <StackPanel.OpacityMask>
+                                                <VisualBrush Visual="{Binding ElementName=Mask}" />
+                                            </StackPanel.OpacityMask>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Border>
+
+
+                            <Button
+                                x:Name="btn_ambil"
+                                Margin="150,-50,0,0"
+                                Click="btn_ambil_Click"
+                                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                ToolTip="Ambil Foto">
+                                <materialDesign:PackIcon
+                                    Width="27"
+                                    Height="27"
+                                    Kind="Camera" />
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="0,10,20,10"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                            <Button
+                                Width="100"
+                                Margin="0,0,5,0"
+                                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                Content="Batal"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                ToolTip="Batal" />
+                            <Button
+                                x:Name="btn_hapus"
+                                Margin="0,0,8,0"
+                                Background="#FFF06A45"
+                                BorderBrush="#FFB7553A"
+                                Click="btn_hapus_Click"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                ToolTip="Hapus Data">
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        Margin="0,0,5,0"
+                                        Kind="Trash" />
+                                    <TextBlock VerticalAlignment="Center">Hapus</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button
+                                x:Name="btn_ubah"
+                                Click="btn_ubah_Click"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                ToolTip="Ubah Data">
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        Margin="0,0,5,0"
+                                        Kind="edit" />
+                                    <TextBlock VerticalAlignment="Center">Ubah</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </DockPanel>
+
+
+
+            </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:DialogHost>
+</UserControl>

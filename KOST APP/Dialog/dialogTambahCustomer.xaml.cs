@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using KOST_APP.Class;
 using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 
 namespace KOST_APP.Dialog
 {
@@ -27,6 +28,7 @@ namespace KOST_APP.Dialog
         }
 
         koneksi k = new koneksi();
+        private String alamat_foto;
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
@@ -45,25 +47,27 @@ namespace KOST_APP.Dialog
                     String jk = "";
                     if (rb_laki.IsChecked == true)
                     {
-                        jk = "Laki - Laki";
+                        jk = "P";
                     }
                     else
                     {
-                        jk = "Perempuan";
+                        jk = "W";
                     }
+                    DateTime tgllahir = tgl_lahir.SelectedDate.Value;
                     var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
 
-                    k.sql = "insert into customer values(@1,@2,@3,@4,@5,@6,@7)";
+                    k.sql = "insert into customer values(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10)";
                     k.setparam();
                     k.perintah.Parameters.AddWithValue("@1", null);
                     k.perintah.Parameters.AddWithValue("@2", txt_nama.Text);
                     k.perintah.Parameters.AddWithValue("@3", txt_telp.Text);
                     k.perintah.Parameters.AddWithValue("@4", jk);
-                    k.perintah.Parameters.AddWithValue("@5", txt_asalkota.Text);
-                    k.perintah.Parameters.AddWithValue("@6", txt_alamat.Text);
-                    k.perintah.Parameters.AddWithValue("@7", cmb_pekerjaan.Text);
-                    k.perintah.Parameters.AddWithValue("@8", txt_instansi.Text);
-                    k.perintah.Parameters.AddWithValue("@9", img);
+                    k.perintah.Parameters.AddWithValue("@5", tgllahir.ToString("yyyy-MM-dd"));
+                    k.perintah.Parameters.AddWithValue("@6", txt_asalkota.Text);
+                    k.perintah.Parameters.AddWithValue("@7", txt_alamat.Text);
+                    k.perintah.Parameters.AddWithValue("@8", cmb_pekerjaan.Text);
+                    k.perintah.Parameters.AddWithValue("@9", txt_instansi.Text);
+                    k.perintah.Parameters.AddWithValue("@10", img);
 
                     k.perintah.ExecuteNonQuery();
                     k.close();
@@ -86,7 +90,17 @@ namespace KOST_APP.Dialog
 
         private void btn_ambil_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Masukan Foto";
+            op.Filter = "Semua Gambar|*.jpg;*.jpeg;*.png|" +
+                        "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                        "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                alamat_foto = op.FileName;
+                img_foto.Source = new BitmapImage(new Uri(op.FileName));
 
+            }
         }
     }
 }
