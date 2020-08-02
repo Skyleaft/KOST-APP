@@ -10,7 +10,7 @@
     mc:Ignorable="d">
     <Grid>
         <Button
-            Margin="295,193,0,0"
+            Margin="412,203,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Button" />
