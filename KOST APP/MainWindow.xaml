@@ -25,61 +25,46 @@
     mc:Ignorable="d">
     <metro:MetroWindow.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Themes/HamburgerMenuTemplate.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <!--  This is the template for all option menu items.  -->
-            <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type Controls:HamburgerMenuGlyphItem}">
-                <DockPanel Height="48" LastChildFill="True">
-                    <Grid
-                        x:Name="IconPart"
-                        Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=CompactPaneLength}"
-                        DockPanel.Dock="Left">
-                        <ContentControl
-                            Grid.Column="0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Content="{Binding Icon}"
-                            Focusable="False"
-                            IsTabStop="False" />
-                    </Grid>
-                    <TextBlock
-                        x:Name="TextPart"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        Text="{Binding Label}" />
-                </DockPanel>
-                <DataTemplate.Triggers>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=PanePlacement}" Value="Right">
-                        <Setter TargetName="IconPart" Property="DockPanel.Dock" Value="Right" />
-                        <Setter TargetName="TextPart" Property="Margin" Value="8,0,0,0" />
-                    </DataTrigger>
-                </DataTemplate.Triggers>
-            </DataTemplate>
-
-            <!--  This is the template for the option menu item  -->
-            <DataTemplate x:Key="HamburgerOptionsMenuItem" DataType="{x:Type Controls:HamburgerMenuIconItem}">
-                <DockPanel Height="48" LastChildFill="True">
+            <!--  This is the template for all menu items. In this sample we use the glyph items.  -->
+            <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type Controls:HamburgerMenuIconItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
                     <ContentControl
-                        x:Name="IconPart"
-                        Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=CompactPaneLength}"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
                         Content="{Binding Icon}"
-                        DockPanel.Dock="Left"
                         Focusable="False"
                         IsTabStop="False" />
                     <TextBlock
-                        x:Name="TextPart"
+                        Grid.Column="1"
                         VerticalAlignment="Center"
                         FontSize="16"
                         Text="{Binding Label}" />
-                </DockPanel>
-                <DataTemplate.Triggers>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=PanePlacement}" Value="Right">
-                        <Setter TargetName="IconPart" Property="DockPanel.Dock" Value="Right" />
-                        <Setter TargetName="TextPart" Property="Margin" Value="8,0,0,0" />
-                    </DataTrigger>
-                </DataTemplate.Triggers>
+                </Grid>
+            </DataTemplate>
+
+            <!--  This is the template for all option menu items.  -->
+            <DataTemplate x:Key="HamburgerOptionsMenuItem" DataType="{x:Type Controls:HamburgerMenuItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=CompactPaneLength}" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl
+                        Grid.Column="0"
+                        Content="{Binding Tag}"
+                        Focusable="False"
+                        IsTabStop="False" />
+                    <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Text="{Binding Label}" />
+                </Grid>
             </DataTemplate>
 
             <ObjectDataProvider
@@ -99,7 +84,6 @@
                     <x:Type TypeName="Visibility" />
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-
 
             <!--  Animasi Ganti Warna  -->
             <Storyboard x:Key="colour_change">
@@ -178,32 +162,22 @@
         </ResourceDictionary>
     </metro:MetroWindow.Resources>
 
-    <materialDesign:DialogHost Identifier="MainDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+    <materialDesign:DialogHost Identifier="MainDialog1" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
 
         <Grid>
-            <Controls:HamburgerMenu
+            <metro:HamburgerMenu
                 x:Name="HamburgerMenuControl"
-                DisplayMode="CompactOverlay"
+                HamburgerVisibility="Collapsed"
                 HamburgerWidth="48"
                 IsPaneOpen="True"
                 ItemInvoked="HamburgerMenuControl_OnItemInvoked"
                 ItemTemplate="{StaticResource HamburgerMenuItem}"
                 OptionsItemTemplate="{StaticResource HamburgerOptionsMenuItem}"
-                SelectedIndex="0">
-                <!--  Header  -->
-                <Controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Foreground="White"
-                            Text="Kost APP" />
-                    </DataTemplate>
-                </Controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
-
+                SelectedIndex="0"
+                Style="{StaticResource MahApps.Styles.HamburgerMenu.CreatorsUpdate}"
+                VerticalScrollBarOnLeftSide="False">
                 <!--  Items  -->
-                <Controls:HamburgerMenu.ItemsSource>
+                <metro:HamburgerMenu.ItemsSource>
                     <metro:HamburgerMenuItemCollection>
                         <metro:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Home}" Label="Home">
                             <metro:HamburgerMenuIconItem.Tag>
@@ -211,124 +185,85 @@
                             </metro:HamburgerMenuIconItem.Tag>
                         </metro:HamburgerMenuIconItem>
 
-                        <!--<metro:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Food}" Label="Data Produk">
+                        <metro:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=HomeCircleOutline}" Label="Data Kost">
                             <metro:HamburgerMenuIconItem.Tag>
-                                <viewpage:PageProduk />
+                                <viewpage:viewDataKost />
                             </metro:HamburgerMenuIconItem.Tag>
                         </metro:HamburgerMenuIconItem>
 
-                        <metro:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=BookList}" Label="Data Katalog">
+                        <metro:HamburgerMenuIconItem Icon="{iconPacks:FontAwesome Kind=HouseUserSolid}" Label="Data Kamar">
                             <metro:HamburgerMenuIconItem.Tag>
-                                <viewpage:PageKatalog />
+                                <viewpage:viewDataKamar />
                             </metro:HamburgerMenuIconItem.Tag>
                         </metro:HamburgerMenuIconItem>
 
-                        <metro:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Message}" Label="Data Pesan">
+                        <metro:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=AccountGroup}" Label="Data Customer">
                             <metro:HamburgerMenuIconItem.Tag>
-                                <viewpage:PageMessage />
+                                <viewpage:viewCustomer />
                             </metro:HamburgerMenuIconItem.Tag>
                         </metro:HamburgerMenuIconItem>
 
-                        <metro:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=ProjectorScreen}" Label="Tampilkan">
-                            <metro:HamburgerMenuIconItem.Tag>
-                                <viewpage:PageFrontend />
-                            </metro:HamburgerMenuIconItem.Tag>
-                        </metro:HamburgerMenuIconItem>-->
 
                     </metro:HamburgerMenuItemCollection>
-                </Controls:HamburgerMenu.ItemsSource>
+                </metro:HamburgerMenu.ItemsSource>
 
                 <!--  Options  -->
-                <Controls:HamburgerMenu.OptionsItemsSource>
-                    <Controls:HamburgerMenuItemCollection>
-
-                        <Controls:HamburgerMenuIconItem Label="Pengaturan">
-                            <Controls:HamburgerMenuIconItem.Icon>
+                <metro:HamburgerMenu.OptionsItemsSource>
+                    <metro:HamburgerMenuItemCollection>
+                        <metro:HamburgerMenuGlyphItem Label="Pengaturan">
+                            <metro:HamburgerMenuGlyphItem.Tag>
                                 <iconPacks:PackIconMaterial
                                     Width="22"
                                     Height="22"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Kind="SettingsHelper" />
-                            </Controls:HamburgerMenuIconItem.Icon>
-                            <Controls:HamburgerMenuIconItem.Tag>
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="28"
-                                    FontWeight="Bold">
-                                    Pengaturan
-                                </TextBlock>
-                            </Controls:HamburgerMenuIconItem.Tag>
-                        </Controls:HamburgerMenuIconItem>
-
-                        <Controls:HamburgerMenuIconItem Label="Logout">
-                            <Controls:HamburgerMenuIconItem.Icon>
+                                    Kind="Cog" />
+                            </metro:HamburgerMenuGlyphItem.Tag>
+                        </metro:HamburgerMenuGlyphItem>
+                        <metro:HamburgerMenuGlyphItem Label="LogOut">
+                            <metro:HamburgerMenuGlyphItem.Tag>
                                 <iconPacks:PackIconMaterial
                                     Width="22"
                                     Height="22"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Kind="Logout" />
-                            </Controls:HamburgerMenuIconItem.Icon>
-                            <Controls:HamburgerMenuIconItem.Tag>
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="28"
-                                    FontWeight="Bold">
-                                    Logout
-                                </TextBlock>
-                            </Controls:HamburgerMenuIconItem.Tag>
-                        </Controls:HamburgerMenuIconItem>
-
-                    </Controls:HamburgerMenuItemCollection>
-                </Controls:HamburgerMenu.OptionsItemsSource>
+                            </metro:HamburgerMenuGlyphItem.Tag>
+                        </metro:HamburgerMenuGlyphItem>
+                    </metro:HamburgerMenuItemCollection>
+                </metro:HamburgerMenu.OptionsItemsSource>
 
                 <!--  Content  -->
-                <Controls:HamburgerMenu.ContentTemplate>
+                <metro:HamburgerMenu.ContentTemplate>
                     <DataTemplate>
                         <Grid x:Name="ContentGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="48" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Border
-                                Grid.Row="0"
-                                Margin="-1,0,-1,0"
-                                Background="#7A7A7A">
+                            <Border Grid.Row="0">
                                 <TextBlock
                                     x:Name="Header"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="24"
-                                    Foreground="White"
                                     Text="{Binding Label}" />
                             </Border>
-                            <Controls:TransitioningContentControl
+                            <metro:TransitioningContentControl
                                 Grid.Row="1"
-                                Content="{Binding}"
+                                Content="{Binding Glyph}"
                                 RestartTransitionOnContentChange="True"
                                 Transition="Default">
-
-                                <Controls:TransitioningContentControl.Resources>
-                                    <DataTemplate DataType="{x:Type Controls:HamburgerMenuGlyphItem}">
-                                        <Image Source="{Binding Glyph, Mode=OneWay, Converter={converters:NullToUnsetValueConverter}}" />
+                                <metro:TransitioningContentControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Mode=OneWay, Converter={converters:NullToUnsetValueConverter}}" />
                                     </DataTemplate>
-
-                                    <DataTemplate DataType="{x:Type Controls:HamburgerMenuIconItem}">
-                                        <ContentControl
-                                            Content="{Binding Tag, Mode=OneWay}"
-                                            Focusable="True"
-                                            IsTabStop="False" />
-                                    </DataTemplate>
-                                </Controls:TransitioningContentControl.Resources>
-
-                            </Controls:TransitioningContentControl>
+                                </metro:TransitioningContentControl.ContentTemplate>
+                            </metro:TransitioningContentControl>
                         </Grid>
                     </DataTemplate>
-                </Controls:HamburgerMenu.ContentTemplate>
-            </Controls:HamburgerMenu>
+                </metro:HamburgerMenu.ContentTemplate>
+            </metro:HamburgerMenu>
 
             <Ellipse
                 x:Name="animation_color"

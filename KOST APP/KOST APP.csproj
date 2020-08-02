@@ -15,19 +15,25 @@
 
   <ItemGroup>
     <None Remove="Resources\2319292edit_burned.png" />
+    <None Remove="Resources\attachment_69770604.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlurryControls" Version="1.0.24" />
     <PackageReference Include="MahApps.Metro" Version="2.1.1" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.4.0" />
     <PackageReference Include="MaterialDesignColors" Version="1.2.6" />
     <PackageReference Include="MaterialDesignThemes" Version="3.1.3" />
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.1.4" />
     <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\2319292edit_burned.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\attachment_69770604.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -45,6 +51,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\viewDataKost.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\viewDataKamar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 
-namespace Anfo_Digital_Menu_Board.Navigation
+namespace KOST_APP.Navigation
 {
     public static class Navigation
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
-using Anfo_Digital_Menu_Board.Mvvm;
+using KOST_APP.Mvvm;
 
-namespace Anfo_Digital_Menu_Board.ViewModels
+namespace KOST_APP.ViewModels
 {
     internal class MenuItem : BindableBase
     {

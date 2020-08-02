@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using Anfo_Digital_Menu_Board.Mvvm;
+using KOST_APP.Mvvm;
 
-namespace Anfo_Digital_Menu_Board.ViewModels
+namespace KOST_APP.ViewModels
 {
     internal class ViewModelBase : BindableBase
     {

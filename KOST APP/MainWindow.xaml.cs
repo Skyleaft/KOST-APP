@@ -41,11 +41,7 @@ namespace KOST_APP
 
         private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
         {
-            if (!e.IsItemOptions && this.HamburgerMenuControl.IsPaneOpen)
-            {
-                // close the menu if a item was selected
-                // this.HamburgerMenuControl.IsPaneOpen = false;
-            }
+            HamburgerMenuControl.Content = e.InvokedItem;
         }
     }
 }

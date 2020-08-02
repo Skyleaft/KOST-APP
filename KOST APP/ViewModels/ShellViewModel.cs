@@ -2,7 +2,7 @@
 using System.Linq;
 using MahApps.Metro.IconPacks;
 
-namespace Anfo_Digital_Menu_Board.ViewModels
+namespace KOST_APP.ViewModels
 {
     internal class ShellViewModel : ViewModelBase
     {
@@ -10,10 +10,10 @@ namespace Anfo_Digital_Menu_Board.ViewModels
         {
             // Build the menus
             this.Menu.Add(new MenuItem() {Icon = new PackIconEntypo() {Kind = PackIconEntypoKind.Home}, Text = "Beranda", NavigationDestination = new Uri("Views/viewBeranda.xaml", UriKind.RelativeOrAbsolute)});
-            this.Menu.Add(new MenuItem() {Icon = new PackIconMaterial() {Kind = PackIconMaterialKind.Food}, Text = "Data Produk", NavigationDestination = new Uri("Views/PageProduk.xaml", UriKind.RelativeOrAbsolute)});
-            this.Menu.Add(new MenuItem() { Icon = new PackIconModern() { Kind = PackIconModernKind.BookList }, Text = "Data Katalog", NavigationDestination = new Uri("Views/PageKatalog.xaml", UriKind.RelativeOrAbsolute) });
-            this.Menu.Add(new MenuItem() { Icon = new PackIconMaterial() { Kind = PackIconMaterialKind.Message }, Text = "Pesan", NavigationDestination = new Uri("Views/PageMessage.xaml", UriKind.RelativeOrAbsolute) });
-            this.Menu.Add(new MenuItem() { Icon = new PackIconModern() { Kind = PackIconModernKind.ProjectorScreen }, Text = "Tampilkan", NavigationDestination = new Uri("Views/PageFrontend.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() {Icon = new PackIconMaterial() {Kind = PackIconMaterialKind.HomeCityOutline}, Text = "Data Kostan", NavigationDestination = new Uri("Views/viewDataKost.xaml", UriKind.RelativeOrAbsolute)});
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HouseUserSolid}, Text = "Data Kamar", NavigationDestination = new Uri("Views/viewDataKamar.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconMaterial() { Kind = PackIconMaterialKind.AccountGroup }, Text = "Data Customer", NavigationDestination = new Uri("Views/viewCustomer.xaml", UriKind.RelativeOrAbsolute) });
+            
 
 
             //menu opsi

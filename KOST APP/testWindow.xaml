@@ -1,0 +1,80 @@
+﻿<Window
+    x:Class="KOST_APP.testWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:class="clr-namespace:KOST_APP.Class"
+    xmlns:controls="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KOST_APP"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="testWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <materialDesign:Card>
+                <Grid
+                    Width="170"
+                    Height="250"
+                    Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="71*" />
+                        <RowDefinition Height="54*" />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <class:ByteToImageConverter x:Key="ByteToImageConverter" />
+                    </Grid.Resources>
+
+                    <Grid>
+                        <controls:BlurryImage
+                            BlurRadius="20"
+                            Source="{Binding Source, ElementName=img_data}"
+                            Stretch="Fill" />
+
+                        <Image x:Name="img_data" Source="{Binding foto, Converter={StaticResource ByteToImageConverter}}" />
+                    </Grid>
+
+                    <StackPanel Grid.Row="1" Margin="0,3,0,0">
+                        <TextBlock
+                            Margin="0,0,0,6"
+                            HorizontalAlignment="Center"
+                            DockPanel.Dock="Top"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Text="{Binding nama}"
+                            TextWrapping="Wrap" />
+                        <StackPanel>
+                            <TextBlock>
+                                Asal Kota :
+                            </TextBlock>
+                            <TextBlock
+                                Margin="8,2,0,0"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Top"
+                                FontSize="12"
+                                Text="{Binding kota}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock>
+                                Tanggal Lahir :
+                            </TextBlock>
+                            <TextBlock
+                                Margin="8,2,0,0"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Top"
+                                FontSize="12"
+                                Text="{Binding tgl_lahir}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </StackPanel>
+    </Grid>
+</Window>

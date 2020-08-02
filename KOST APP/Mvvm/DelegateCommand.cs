@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Input;
 
-namespace Anfo_Digital_Menu_Board.Mvvm
+namespace KOST_APP.Mvvm
 {
     internal class DelegateCommand : ICommand
     {
