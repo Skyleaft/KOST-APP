@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -25,31 +26,47 @@ namespace KOST_APP
             InitializeComponent();
         }
 
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            content.Children.Clear();
-            UserControl usc = null;
-
-            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            try
             {
-                case "ItemHome":
-                    usc = new viewBeranda();
-                    content.Children.Add(usc);
-                    break;
-                case "ItemDataKost":
-                    usc = new viewDataKost();
-                    content.Children.Add(usc);
-                    break;
-                case "ItemDataKamar":
-                    usc = new viewDataKamar();
-                    content.Children.Add(usc);
-                    break;
-                case "ItemDataCustomer":
-                    usc = new viewCustomer();
-                    content.Children.Add(usc);
-                    break;
-                default:
-                    break;
+                await Task.Delay(100);
+                content.Children.Clear();
+                UserControl usc = null;
+
+                switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+                {
+                    case "ItemHome":
+                        usc = new viewBeranda();
+                        content.Children.Add(usc);
+                        break;
+                    case "ItemDataKost":
+                        usc = new viewDataKost();
+                        content.Children.Add(usc);
+                        break;
+                    case "ItemDataKamar":
+                        usc = new viewDataKamar();
+                        content.Children.Add(usc);
+                        break;
+                    case "ItemDataCustomer":
+                        usc = new viewCustomer();
+                        content.Children.Add(usc);
+                        break;
+                    case "ItemPengaturan":
+
+                        break;
+                    case "ItemLogout":
+                        var login = new Window_Login();
+                        this.Close();
+
+                        login.Show();
+                        break;
+                    default:
+                        break;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("error di "+ex);
             }
         }
 
@@ -65,6 +82,11 @@ namespace KOST_APP
                 Storyboard sb = this.FindResource("menu_close") as Storyboard;
                 sb.Begin();
             }
+        }
+
+        private void ItemHome_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -17,62 +17,41 @@
             <materialDesign:Card>
                 <Grid
                     Width="170"
-                    Height="250"
+                    Height="200"
                     Margin="3">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="71*" />
-                        <RowDefinition Height="54*" />
+                        <RowDefinition Height="161*" />
+                        <RowDefinition Height="39*" />
                     </Grid.RowDefinitions>
                     <Grid.Resources>
-                        <class:ByteToImageConverter x:Key="ByteToImageConverter" />
+                        <class:StatusToColorConverter x:Key="StatusToColorConverter" />
                     </Grid.Resources>
 
-                    <Grid>
-                        <controls:BlurryImage
-                            BlurRadius="20"
-                            Source="{Binding Source, ElementName=img_data}"
-                            Stretch="Fill" />
-
-                        <Image x:Name="img_data" Source="{Binding foto, Converter={StaticResource ByteToImageConverter}}" />
-                    </Grid>
-
-                    <StackPanel Grid.Row="1" Margin="0,3,0,0">
+                    <DockPanel Background="{Binding status, Converter={StaticResource StatusToColorConverter}}" />
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock
                             Margin="0,0,0,6"
                             HorizontalAlignment="Center"
                             DockPanel.Dock="Top"
                             FontSize="14"
                             FontWeight="Bold"
-                            Text="{Binding nama}"
+                            Text="{Binding nomor_kamar}"
                             TextWrapping="Wrap" />
-                        <StackPanel>
-                            <TextBlock>
-                                Asal Kota :
-                            </TextBlock>
-                            <TextBlock
-                                Margin="8,2,0,0"
-                                HorizontalAlignment="Left"
-                                DockPanel.Dock="Top"
-                                FontSize="12"
-                                Text="{Binding kota}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock>
-                                Tanggal Lahir :
-                            </TextBlock>
-                            <TextBlock
-                                Margin="8,2,0,0"
-                                HorizontalAlignment="Left"
-                                DockPanel.Dock="Top"
-                                FontSize="12"
-                                Text="{Binding tgl_lahir}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-
 
 
                     </StackPanel>
+
+                    <DockPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            FontSize="15"
+                            Text="{Binding biaya}"
+                            TextWrapping="Wrap" />
+                    </DockPanel>
                 </Grid>
             </materialDesign:Card>
         </StackPanel>

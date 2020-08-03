@@ -87,5 +87,12 @@ namespace KOST_APP.Views
         {
             showdata();
         }
+
+        private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            k.sql = "select * from customer where nama like'%" + txt_cari.Text + "%' or kota like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            lv_customer.ItemsSource = k.dt.DefaultView;
+        }
     }
 }

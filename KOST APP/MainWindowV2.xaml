@@ -403,9 +403,11 @@
 
                         </StackPanel>
 
-                        <StackPanel>
+                        <DockPanel>
                             <ListView
                                 x:Name="ListViewMenu"
+                                VerticalAlignment="Top"
+                                DockPanel.Dock="Top"
                                 Foreground="{DynamicResource MaterialDesignBody}"
                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                 SelectionChanged="ListViewMenu_SelectionChanged">
@@ -413,6 +415,7 @@
                                 <ListViewItem
                                     x:Name="ItemHome"
                                     Height="60"
+                                    IsSelected="True"
                                     Style="{StaticResource CustomMenu}">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon
@@ -475,8 +478,32 @@
                                             Text="Data Customer" />
                                     </StackPanel>
                                 </ListViewItem>
+                                <Separator Height="5" />
                                 <ListViewItem
-                                    x:Name="ItemSetting"
+                                    x:Name="ItemSewa"
+                                    Height="60"
+                                    Style="{StaticResource CustomMenu}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            Width="25"
+                                            Height="25"
+                                            Margin="10"
+                                            Kind="UserGroup" />
+                                        <TextBlock
+                                            Margin="20,10"
+                                            VerticalAlignment="Center"
+                                            Text="Sewa Kamar" />
+                                    </StackPanel>
+                                </ListViewItem>
+                            </ListView>
+                            <ListView
+                                VerticalAlignment="Bottom"
+                                DockPanel.Dock="Bottom"
+                                Foreground="{DynamicResource MaterialDesignBody}"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                SelectionChanged="ListViewMenu_SelectionChanged">
+                                <ListViewItem
+                                    x:Name="ItemPengaturan"
                                     Height="60"
                                     Style="{StaticResource CustomMenu}">
                                     <StackPanel Orientation="Horizontal">
@@ -491,8 +518,24 @@
                                             Text="Pengaturan" />
                                     </StackPanel>
                                 </ListViewItem>
+                                <ListViewItem
+                                    x:Name="ItemLogout"
+                                    Height="60"
+                                    Style="{StaticResource CustomMenu}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            Width="25"
+                                            Height="25"
+                                            Margin="10"
+                                            Kind="Logout" />
+                                        <TextBlock
+                                            Margin="20,10"
+                                            VerticalAlignment="Center"
+                                            Text="Logout" />
+                                    </StackPanel>
+                                </ListViewItem>
                             </ListView>
-                        </StackPanel>
+                        </DockPanel>
 
                     </DockPanel>
 

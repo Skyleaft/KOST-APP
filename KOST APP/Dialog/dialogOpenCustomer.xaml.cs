@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -30,9 +31,16 @@ namespace KOST_APP.Dialog
         {
             InitializeComponent();
             idCustomer = id_customer;
+            loadData();
+            
+        }
+
+        private async void loadData()
+        {
+            await Task.Delay(300);
             try
             {
-                k.sql = "select *from customer where id_customer ='" + id_customer + "'";
+                k.sql = "select *from customer where id_customer ='" + idCustomer + "'";
                 k.setdt();
                 Byte[] tmpfoto = new Byte[0];
                 foreach (DataRow baris in k.dt.Rows)
@@ -59,8 +67,6 @@ namespace KOST_APP.Dialog
                         tmpfoto = (Byte[])baris[9];
                         img_foto.Source = ByteImageConverter.ByteToImage(tmpfoto);
                     }
-
-
                 }
             }
             catch (Exception ex)
@@ -68,7 +74,6 @@ namespace KOST_APP.Dialog
                 //MessageBox.Show("error di open " + ex);
             }
         }
-
 
         private void btn_hapus_Click(object sender, RoutedEventArgs e)
         {
