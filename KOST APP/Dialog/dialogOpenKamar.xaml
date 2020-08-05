@@ -8,8 +8,8 @@
     xmlns:local="clr-namespace:KOST_APP.Dialog"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="300"
-    d:DesignWidth="400"
+    d:DesignHeight="370"
+    d:DesignWidth="750"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{materialDesign:MaterialDesignFont}"
     TextElement.FontSize="14"
@@ -53,11 +53,16 @@
                     </Button>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
+
             <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="174*" />
+                    <ColumnDefinition Width="191*" />
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="10*" />
-                    <RowDefinition Height="49*" />
-                    <RowDefinition Height="11*" />
+                    <RowDefinition Height="44*" />
+                    <RowDefinition Height="251*" />
+                    <RowDefinition Height="55*" />
                 </Grid.RowDefinitions>
 
                 <StackPanel
@@ -79,6 +84,7 @@
                     </TextBlock>
                 </StackPanel>
                 <StackPanel
+                    Grid.Column="1"
                     Width="60"
                     Height="32"
                     Margin="0,0,0,0"
@@ -103,10 +109,7 @@
                     </Button>
                 </StackPanel>
 
-                <StackPanel
-                    Grid.Row="1"
-                    Margin="20,40,20,40"
-                    VerticalAlignment="Stretch">
+                <StackPanel Grid.Row="1" Margin="20,40,20,40">
 
                     <StackPanel
                         Margin="15,0,15,15"
@@ -122,9 +125,29 @@
                             Kind="UserAltSolid" />
                         <TextBox
                             x:Name="txt_nama"
-                            Width="270"
+                            Width="240"
                             Margin="5,0,0,0"
                             materialDesign:HintAssist.Hint="Nama Kamar"
+                            FontSize="14"
+                            MaxLength="15" />
+                    </StackPanel>
+                    <StackPanel
+                        Margin="15,0,15,15"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <iconPacks:PackIconUnicons
+                            Width="22"
+                            Height="22"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=txt_luas}"
+                            Kind="RulerCombined" />
+                        <TextBox
+                            x:Name="txt_luas"
+                            Width="240"
+                            Margin="5,0,0,0"
+                            materialDesign:HintAssist.Hint="Luas Kamar"
                             FontSize="14"
                             MaxLength="15" />
                     </StackPanel>
@@ -142,7 +165,7 @@
                             Kind="MoneyBillAltRegular" />
                         <TextBox
                             x:Name="txt_biaya"
-                            Width="270"
+                            Width="240"
                             Margin="5,0,0,0"
                             materialDesign:HintAssist.Hint="Biaya Kamar"
                             FontSize="14"
@@ -182,7 +205,9 @@
 
                 <StackPanel
                     Grid.Row="2"
-                    Margin="0,0,0,0"
+                    Width="304"
+                    Height="32"
+                    Margin="0,0,10,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Orientation="Horizontal">
@@ -226,6 +251,91 @@
                             <TextBlock VerticalAlignment="Center">Ubah</TextBlock>
                         </StackPanel>
                     </Button>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    Margin="0,1,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            DockPanel.Dock="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=cmb_fasilitas}"
+                                Kind="AccountTie" />
+                            <ComboBox
+                                x:Name="cmb_fasilitas"
+                                Width="auto"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Stretch"
+                                materialDesign:HintAssist.Hint="Pilih Fasilitas"
+                                IsEditable="False"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem Content="Kamar Mandi Dalam" />
+                                <ComboBoxItem Content="AC" />
+                                <ComboBoxItem Content="TV" />
+                                <ComboBoxItem Content="Internet" />
+                                <ComboBoxItem Content="Tempat Tidur" />
+                                <ComboBoxItem Content="Air Panas" />
+                                <ComboBoxItem Content="Meja Dan Kursi" />
+                                <ComboBoxItem Content="Kamar Kosongan" />
+                                <ComboBoxItem Content="Almari Pakaian" />
+                            </ComboBox>
+                        </StackPanel>
+                        <Button
+                            x:Name="btn_tambahfas"
+                            Click="btn_tambahfas_Click"
+                            Content="+ Tambah"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Tambah Fasilitas" />
+                        <Button
+                            x:Name="btn_fasmin"
+                            Width="100"
+                            Margin="5,0,0,0"
+                            Click="btn_fasmin_Click"
+                            Content="- Hapus"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="Batal" />
+                    </StackPanel>
+                    <DataGrid
+                        x:Name="dg_fasili"
+                        Margin="0,0,0,5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
+                        AutoGenerateColumns="True"
+                        CanUserAddRows="true"
+                        CanUserResizeRows="False"
+                        CanUserSortColumns="True"
+                        IsReadOnly="True"
+                        SelectionChanged="dg_fasili_SelectionChanged" AutoGeneratingColumn="dg_fasili_AutoGeneratingColumn">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="50*"
+                                Binding="{Binding id_detailKamar}"
+                                Header="id detail"
+                                Visibility="Collapsed" />
+                            <DataGridTextColumn
+                                Width="70*"
+                                Binding="{Binding Nomor}"
+                                Header="Nomer" />
+                            <DataGridTextColumn
+                                Width="200*"
+                                Binding="{Binding nama_fasilitas}"
+                                Header="Nama Fasilitas" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
             </Grid>
         </materialDesign:DialogHost>

@@ -47,13 +47,14 @@ namespace KOST_APP.Dialog
                 {
                     int biaya = int.Parse(txt_biaya.Text, System.Globalization.NumberStyles.Currency);
 
-                    k.sql = "insert into kamar values(@1,@2,@3,@4,@5)";
+                    k.sql = "insert into kamar values(@1,@2,@3,@4,@5,@6)";
                     k.setparam();
                     k.perintah.Parameters.AddWithValue("@1", null);
                     k.perintah.Parameters.AddWithValue("@2", txt_nama.Text);
                     k.perintah.Parameters.AddWithValue("@3", biaya);
                     k.perintah.Parameters.AddWithValue("@4", "1");
                     k.perintah.Parameters.AddWithValue("@5", "0");
+                    k.perintah.Parameters.AddWithValue("@6", txt_luas.Text);
 
                     k.perintah.ExecuteNonQuery();
                     k.close();
@@ -100,5 +101,14 @@ namespace KOST_APP.Dialog
             }
         }
 
+        private void btn_tambahfas_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

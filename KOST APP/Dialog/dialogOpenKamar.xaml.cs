@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataGridTextColumn = MaterialDesignThemes.Wpf.DataGridTextColumn;
 
 namespace KOST_APP.Dialog
 {
@@ -23,7 +24,8 @@ namespace KOST_APP.Dialog
     public partial class dialogOpenKamar : UserControl
     {
         koneksi k = new koneksi();
-        private String idKamar;
+        private String idKamar,idDetail;
+
         public dialogOpenKamar(String id_kamar)
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace KOST_APP.Dialog
             txt_biaya.Text = Convert.ToDecimal(0).ToString("c");
 
             loadData();
+            showdataFas();
 
             txt_biaya.Text = Convert.ToDecimal(0).ToString("c");
         }
@@ -59,17 +62,34 @@ namespace KOST_APP.Dialog
             }
         }
 
+        private void showdataFas()
+        {
+            try
+            {
+                k.sql = "select id_detailKamar,ROW_NUMBER() OVER (ORDER BY nama_fasilitas) Nomor, nama_fasilitas from detail_kamar where id_kamar ='"+idKamar+"'";
+                k.setdt();
+                dg_fasili.ItemsSource = k.dt.DefaultView;
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error di open " + ex);
+            }
+        }
+
         private void btn_ubah_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 int biaya = int.Parse(txt_biaya.Text, System.Globalization.NumberStyles.Currency);
 
-                k.sql = "update kamar set nomor_kamar=@1,biaya=@2,status=@3 where id_kamar = '" + idKamar + "'";
+                k.sql = "update kamar set nomor_kamar=@1,biaya=@2,status=@3, luas_kamar=@4 where id_kamar = '" + idKamar + "'";
                 k.setparam();
                 k.perintah.Parameters.AddWithValue("@1", txt_nama.Text);
                 k.perintah.Parameters.AddWithValue("@2", biaya);
                 k.perintah.Parameters.AddWithValue("@3", cmb_status.SelectedIndex);
+                k.perintah.Parameters.AddWithValue("@4", txt_luas.Text);
 
                 k.perintah.ExecuteNonQuery();
                 k.close();
@@ -128,6 +148,53 @@ namespace KOST_APP.Dialog
                 //a = UInt32.Parse(txt_biaya.Text, System.Globalization.NumberStyles.Currency);
 
                 txt_biaya.SelectionStart = txt_biaya.Text.Length - 3; // menetapkan titik awal dari teks yang dipilih pada textbox
+            }
+        }
+
+        private void btn_tambahfas_Click(object sender, RoutedEventArgs e)
+        {
+            k.sql = "insert into detail_kamar values(@1,@2,@3)";
+            k.setparam();
+            k.perintah.Parameters.AddWithValue("@1", null);
+            k.perintah.Parameters.AddWithValue("@2", idKamar);
+            k.perintah.Parameters.AddWithValue("@3", cmb_fasilitas.Text);
+            k.perintah.ExecuteNonQuery();
+            k.close();
+            showdataFas();
+        }
+
+        private void btn_fasmin_Click(object sender, RoutedEventArgs e)
+        {
+            if (idDetail != null)
+            {
+                k.sql = "delete from detail_kamar where id_detailKamar = '" + idDetail + "'";
+                k.setdt();
+                idDetail = null;
+                showdataFas();
+            }
+        }
+
+        private void dg_fasili_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            switch (e.Column.Header.ToString())
+            {
+                case "id_detailKamar":
+                    e.Column.Visibility = Visibility.Collapsed;
+                    break;
+            }
+        }
+
+        private void dg_fasili_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dg_fasili.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)dg_fasili.SelectedItem;
+                string index = dataRow.Row[0].ToString();
+
+                k.sql = "select *from detail_kamar  where id_detailKamar = '" + index + "'";
+                k.setdt();
+
+                idDetail = k.dt.Rows[0][0].ToString();
             }
         }
     }

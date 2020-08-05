@@ -8,8 +8,8 @@
     xmlns:local="clr-namespace:KOST_APP.Dialog"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="330"
-    d:DesignWidth="750"
+    d:DesignHeight="300"
+    d:DesignWidth="390"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{materialDesign:MaterialDesignFont}"
     TextElement.FontSize="14"
@@ -17,11 +17,14 @@
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     mc:Ignorable="d">
     <materialDesign:DialogHost Identifier="SubDialogKamar">
-        <Grid Margin="10" HorizontalAlignment="Left">
+        <Grid Margin="10" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="177*" />
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="49*" />
-                <RowDefinition Height="11*" />
+                <RowDefinition Height="37*" />
+                <RowDefinition Height="256*" />
+                <RowDefinition Height="37*" />
             </Grid.RowDefinitions>
 
             <StackPanel
@@ -43,6 +46,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel
+                Grid.Column="1"
                 Width="60"
                 Height="32"
                 Margin="0,0,0,0"
@@ -67,10 +71,7 @@
                 </Button>
             </StackPanel>
 
-            <StackPanel
-                Grid.Row="1"
-                Margin="20,40,20,40"
-                VerticalAlignment="Stretch">
+            <StackPanel Grid.Row="1" Margin="20,40,20,40">
 
                 <StackPanel
                     Margin="15,0,15,15"
@@ -86,7 +87,7 @@
                         Kind="UserAltSolid" />
                     <TextBox
                         x:Name="txt_nama"
-                        Width="270"
+                        Width="240"
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Nama Kamar"
                         FontSize="14"
@@ -96,17 +97,17 @@
                     Margin="15,0,15,15"
                     VerticalAlignment="Top"
                     Orientation="Horizontal">
-                    <iconPacks:PackIconFontAwesome
+                    <iconPacks:PackIconUnicons
                         Width="22"
                         Height="22"
                         Margin="4,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Stretch"
                         Foreground="{Binding BorderBrush, ElementName=txt_luas}"
-                        Kind="UserAltSolid" />
+                        Kind="RulerCombined" />
                     <TextBox
                         x:Name="txt_luas"
-                        Width="270"
+                        Width="240"
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Luas Kamar"
                         FontSize="14"
@@ -126,7 +127,7 @@
                         Kind="MoneyBillAltRegular" />
                     <TextBox
                         x:Name="txt_biaya"
-                        Width="270"
+                        Width="240"
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Biaya Kamar"
                         FontSize="14"
@@ -141,7 +142,7 @@
                 Grid.Row="2"
                 Width="205"
                 Height="32"
-                Margin="0,0,0,0"
+                Margin="0,0,10,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Orientation="Horizontal">
@@ -160,6 +161,8 @@
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="Simpan Data" />
             </StackPanel>
+
+
         </Grid>
     </materialDesign:DialogHost>
 </UserControl>
