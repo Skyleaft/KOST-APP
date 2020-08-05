@@ -79,7 +79,7 @@
                         VerticalAlignment="Top"
                         Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        ToolTip="Batal Login">
+                        ToolTip="Close">
                         <materialDesign:PackIcon
                             Width="28"
                             Height="28"

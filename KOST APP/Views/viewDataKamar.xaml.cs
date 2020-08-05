@@ -2,6 +2,7 @@
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,7 +48,20 @@ namespace KOST_APP.Views
 
         private void lv_kamar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (lv_kamar.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)lv_kamar.SelectedItem;
+                string index = dataRow.Row[0].ToString();
 
+                k.sql = "select *from kamar  where id_kamar = '" + index + "'";
+                k.setdt();
+
+                String idkmr = k.dt.Rows[0][0].ToString();
+
+                var showdialog = new dialogOpenKamar(idkmr);
+                DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+
+            }
         }
 
         //private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
