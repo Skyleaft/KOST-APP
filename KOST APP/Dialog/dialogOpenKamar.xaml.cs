@@ -53,6 +53,7 @@ namespace KOST_APP.Dialog
                     txt_nama.Text = baris[1].ToString();
                     txt_biaya.Text = baris[2].ToString();
                     cmb_status.SelectedIndex = int.Parse(baris[4].ToString());
+                    txt_luas.Text = baris[5].ToString();
                 }
 
             }

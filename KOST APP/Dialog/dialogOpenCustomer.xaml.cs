@@ -45,9 +45,10 @@ namespace KOST_APP.Dialog
                 Byte[] tmpfoto = new Byte[0];
                 foreach (DataRow baris in k.dt.Rows)
                 {
-                    txt_nama.Text = baris[1].ToString();
-                    txt_telp.Text = baris[2].ToString();
-                    if (baris[3].ToString() == "P")
+                    txt_nik.Text = baris[1].ToString();
+                    txt_nama.Text = baris[2].ToString();
+                    txt_telp.Text = baris[3].ToString();
+                    if (baris[4].ToString() == "P")
                     {
                         rb_laki.IsChecked = true;
                     }
@@ -55,16 +56,17 @@ namespace KOST_APP.Dialog
                     {
                         rb_perempuan.IsChecked = true;
                     }
-                    String tgllahir = baris[4].ToString();
+                    String tgllahir = baris[5].ToString();
                     DateTime dt = Convert.ToDateTime(tgllahir);
                     tgl_lahir.SelectedDate = dt;
-                    txt_asalkota.Text = baris[5].ToString();
-                    txt_alamat.Text = baris[6].ToString();
-                    cmb_pekerjaan.Text = baris[7].ToString();
-                    txt_instansi.Text = baris[8].ToString();
-                    if (!baris[9].Equals(null))
+                    txt_asalkota.Text = baris[6].ToString();
+                    txt_alamat.Text = baris[7].ToString();
+                    cmb_pekerjaan.Text = baris[8].ToString();
+                    txt_instansi.Text = baris[9].ToString();
+                    
+                    if (!baris[10].Equals(null))
                     {
-                        tmpfoto = (Byte[])baris[9];
+                        tmpfoto = (Byte[])baris[10];
                         img_foto.Source = ByteImageConverter.ByteToImage(tmpfoto);
                     }
                 }
@@ -110,7 +112,7 @@ namespace KOST_APP.Dialog
                 DateTime tgllahir = tgl_lahir.SelectedDate.Value;
                 var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
 
-                k.sql = "update customer set nama=@1,no_hp=@2,jenis_kelamin=@3,tgl_lahir=@4,kota=@5,alamat=@6,pekerjaan=@7,nama_instansi=@8,foto=@9 where id_customer = '" + idCustomer + "'";
+                k.sql = "update customer set nama=@1,no_hp=@2,jenis_kelamin=@3,tgl_lahir=@4,kota=@5,alamat=@6,pekerjaan=@7,nama_instansi=@8,foto=@9, nik=@10 where id_customer = '" + idCustomer + "'";
                 k.setparam();
                 k.perintah.Parameters.AddWithValue("@1", txt_nama.Text);
                 k.perintah.Parameters.AddWithValue("@2", txt_telp.Text);
@@ -121,6 +123,7 @@ namespace KOST_APP.Dialog
                 k.perintah.Parameters.AddWithValue("@7", cmb_pekerjaan.Text);
                 k.perintah.Parameters.AddWithValue("@8", txt_instansi.Text);
                 k.perintah.Parameters.AddWithValue("@9", img);
+                k.perintah.Parameters.AddWithValue("@10", txt_nik);
 
                 k.perintah.ExecuteNonQuery();
                 k.close();

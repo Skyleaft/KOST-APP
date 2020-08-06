@@ -24,6 +24,10 @@ namespace KOST_APP
         public MainWindowV2()
         {
             InitializeComponent();
+
+            Storyboard sb = this.FindResource("menu_open") as Storyboard;
+            sb.Begin();
+            MenuToggleButton.IsChecked = true;
         }
 
         private async void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)

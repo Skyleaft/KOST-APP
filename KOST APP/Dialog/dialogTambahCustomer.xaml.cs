@@ -32,7 +32,7 @@ namespace KOST_APP.Dialog
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
-            if (txt_nama.Text == "" || txt_telp.Text == "" || txt_asalkota.Text == "")
+            if (txt_nama.Text == "" || txt_telp.Text == "" || txt_asalkota.Text == "" || txt_nik.Text =="")
             {
                 var sampleMessageDialog = new SampleMessageDialog
                 {
@@ -56,18 +56,19 @@ namespace KOST_APP.Dialog
                     DateTime tgllahir = tgl_lahir.SelectedDate.Value;
                     var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
 
-                    k.sql = "insert into customer values(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10)";
+                    k.sql = "insert into customer values(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11)";
                     k.setparam();
                     k.perintah.Parameters.AddWithValue("@1", null);
-                    k.perintah.Parameters.AddWithValue("@2", txt_nama.Text);
-                    k.perintah.Parameters.AddWithValue("@3", txt_telp.Text);
-                    k.perintah.Parameters.AddWithValue("@4", jk);
-                    k.perintah.Parameters.AddWithValue("@5", tgllahir.ToString("yyyy-MM-dd"));
-                    k.perintah.Parameters.AddWithValue("@6", txt_asalkota.Text);
-                    k.perintah.Parameters.AddWithValue("@7", txt_alamat.Text);
-                    k.perintah.Parameters.AddWithValue("@8", cmb_pekerjaan.Text);
-                    k.perintah.Parameters.AddWithValue("@9", txt_instansi.Text);
-                    k.perintah.Parameters.AddWithValue("@10", img);
+                    k.perintah.Parameters.AddWithValue("@2", txt_nik.Text);
+                    k.perintah.Parameters.AddWithValue("@3", txt_nama.Text);
+                    k.perintah.Parameters.AddWithValue("@4", txt_telp.Text);
+                    k.perintah.Parameters.AddWithValue("@5", jk);
+                    k.perintah.Parameters.AddWithValue("@6", tgllahir.ToString("yyyy-MM-dd"));
+                    k.perintah.Parameters.AddWithValue("@7", txt_asalkota.Text);
+                    k.perintah.Parameters.AddWithValue("@8", txt_alamat.Text);
+                    k.perintah.Parameters.AddWithValue("@9", cmb_pekerjaan.Text);
+                    k.perintah.Parameters.AddWithValue("@10", txt_instansi.Text);
+                    k.perintah.Parameters.AddWithValue("@11", img);
 
                     k.perintah.ExecuteNonQuery();
                     k.close();
