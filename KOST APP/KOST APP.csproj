@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="BlurryControls" Version="1.0.24" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
     <PackageReference Include="MahApps.Metro" Version="2.1.1" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.4.0" />
     <PackageReference Include="MaterialDesignColors" Version="1.2.6" />
