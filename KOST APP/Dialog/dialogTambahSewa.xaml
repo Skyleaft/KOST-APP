@@ -94,6 +94,7 @@
                             Margin="5,0,0,0"
                             materialDesign:HintAssist.Hint="Nama"
                             FontSize="16"
+                            IsReadOnly="True"
                             MaxLength="15" />
                         <Button
                             x:Name="btn_caricust"
@@ -119,10 +120,10 @@
                             Margin="4,0,10,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
-                            Foreground="{Binding BorderBrush, ElementName=tgl_lahir}"
+                            Foreground="{Binding BorderBrush, ElementName=tgl_checkin}"
                             Kind="DateRange" />
                         <DatePicker
-                            x:Name="tgl_lahir"
+                            x:Name="tgl_checkin"
                             Width="260"
                             materialDesign:HintAssist.Hint="Tanggal Checkin"
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
@@ -136,7 +137,7 @@
                                 Margin="4,0,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
-                                Foreground="{Binding BorderBrush, ElementName=tgl_lahir}"
+                                Foreground="{Binding BorderBrush, ElementName=tgl_checkin}"
                                 Kind="DateRange" />
                             <TextBlock
                                 Margin="5,0,0,0"
@@ -192,6 +193,7 @@
                             Margin="5,0,0,0"
                             materialDesign:HintAssist.Hint="Kamar"
                             FontSize="16"
+                            IsReadOnly="True"
                             MaxLength="15" />
                         <Button
                             x:Name="btn_carikamar"

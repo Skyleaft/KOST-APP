@@ -21,11 +21,15 @@ namespace KOST_APP.Dialog
     public partial class dialogPilihKamar : UserControl
     {
         koneksi k = new koneksi();
+        private string idKmr,namaKmr;
         public dialogPilihKamar()
         {
             InitializeComponent();
             showdata();
         }
+
+        public event Action<string> Check;
+        public event Action<string> Check2;
 
         private void lv_kamar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -37,7 +41,8 @@ namespace KOST_APP.Dialog
                 k.sql = "select *from kamar  where id_kamar = '" + index + "'";
                 k.setdt();
 
-                String idkmr = k.dt.Rows[0][0].ToString();
+                idKmr = k.dt.Rows[0][0].ToString();
+                namaKmr = k.dt.Rows[0][1].ToString();
             }
         }
 
@@ -63,7 +68,9 @@ namespace KOST_APP.Dialog
 
         private void btn_pilih_Click(object sender, RoutedEventArgs e)
         {
-
+            Check(idKmr);
+            Check2(namaKmr);
+            DialogHost.CloseDialogCommand.Execute(null, this);
         }
     }
 }

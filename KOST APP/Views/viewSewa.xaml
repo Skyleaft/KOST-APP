@@ -112,6 +112,7 @@
                 materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                 materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
                 AutoGenerateColumns="True"
+                AutoGeneratingColumn="dg_sewa_AutoGeneratingColumn"
                 CanUserAddRows="true"
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"

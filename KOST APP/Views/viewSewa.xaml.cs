@@ -56,10 +56,10 @@ namespace KOST_APP.Views
             showdata();
         }
 
-        private void lv_customer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void dg_sewa_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
         }
-
     }
 }

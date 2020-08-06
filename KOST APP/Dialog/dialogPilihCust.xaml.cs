@@ -20,8 +20,11 @@ namespace KOST_APP.Dialog
     /// </summary>
     public partial class dialogPilihCust : UserControl
     {
-        private String idCust;
+        private String idCust,namaCust;
         koneksi k = new koneksi();
+
+        public event Action<string> Check;
+        public event Action<string> Check2;
         public dialogPilihCust()
         {
             InitializeComponent();
@@ -51,6 +54,7 @@ namespace KOST_APP.Dialog
                 k.setdt();
 
                 idCust = k.dt.Rows[0][0].ToString();
+                namaCust = k.dt.Rows[0][2].ToString();
             }
         }
 
@@ -63,7 +67,9 @@ namespace KOST_APP.Dialog
 
         private void btn_pilih_Click(object sender, RoutedEventArgs e)
         {
-
+            Check(idCust);
+            Check2(namaCust);
+            DialogHost.CloseDialogCommand.Execute(null, this);
         }
     }
 }
