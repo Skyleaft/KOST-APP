@@ -105,33 +105,25 @@
         </materialDesign:ColorZone>
         <DockPanel Grid.Row="1">
             <DataGrid
-                x:Name="dg_fasili"
+                x:Name="dg_sewa"
                 Margin="0,0,0,5"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                 materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
                 AutoGenerateColumns="True"
-                AutoGeneratingColumn="dg_fasili_AutoGeneratingColumn"
                 CanUserAddRows="true"
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"
-                IsReadOnly="True"
-                SelectionChanged="dg_fasili_SelectionChanged">
+                IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Width="50*"
-                        Binding="{Binding id_detailKamar}"
-                        Header="id detail"
-                        Visibility="Collapsed" />
-                    <DataGridTextColumn
-                        Width="70*"
-                        Binding="{Binding Nomor}"
-                        Header="Nomer" />
-                    <DataGridTextColumn
-                        Width="200*"
-                        Binding="{Binding nama_fasilitas}"
-                        Header="Nama Fasilitas" />
+                    <DataGridTextColumn Binding="{Binding id_sewa}" Header="ID Sewa" />
+                    <DataGridTextColumn Binding="{Binding nama}" Header="Nama" />
+                    <DataGridTextColumn Binding="{Binding kota}" Header="Asal Kota" />
+                    <DataGridTextColumn Binding="{Binding no_hp}" Header="No Hp" />
+                    <DataGridTextColumn Binding="{Binding tgl_checkin}" Header="Tanggal Checkin" />
+                    <DataGridTextColumn Binding="{Binding nomor_kamar}" Header="Nomor Kamar" />
+                    <DataGridTextColumn Binding="{Binding lama_sewa}" Header="Lama Sewa" />
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

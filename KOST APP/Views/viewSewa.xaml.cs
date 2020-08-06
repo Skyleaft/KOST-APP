@@ -20,9 +20,11 @@ namespace KOST_APP.Views
     /// </summary>
     public partial class viewSewa : UserControl
     {
+        koneksi k = new koneksi();
         public viewSewa()
         {
             InitializeComponent();
+            showdata();
         }
 
         private void btn_tambah_Click(object sender, RoutedEventArgs e)
@@ -31,9 +33,17 @@ namespace KOST_APP.Views
             DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
         }
 
+        public void showdata()
+        {
+            k.sql = "select * from sewa";
+            k.setdt();
+            dg_sewa.ItemsSource = k.dt.DefaultView;
+
+        }
+
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            //showdata();
+            showdata();
         }
 
         private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
@@ -43,7 +53,7 @@ namespace KOST_APP.Views
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
         {
-
+            showdata();
         }
 
         private void lv_customer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,14 +61,5 @@ namespace KOST_APP.Views
 
         }
 
-        private void dg_fasili_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-
-        }
-
-        private void dg_fasili_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
