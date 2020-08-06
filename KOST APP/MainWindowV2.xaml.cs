@@ -35,44 +35,43 @@ namespace KOST_APP
             try
             {
                 await Task.Delay(100);
-                content.Children.Clear();
-                UserControl usc = null;
+                ListViewOption.UnselectAll();
 
-                switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+                if (ListViewMenu.SelectedItem != null)
                 {
-                    case "ItemHome":
-                        usc = new viewBeranda();
-                        content.Children.Add(usc);
-                        break;
-                    case "ItemDataKost":
-                        usc = new viewDataKost();
-                        content.Children.Add(usc);
-                        break;
-                    case "ItemDataKamar":
-                        usc = new viewDataKamar();
-                        content.Children.Add(usc);
-                        break;
-                    case "ItemDataCustomer":
-                        usc = new viewCustomer();
-                        content.Children.Add(usc);
-                        break;
-                    case "ItemSewa":
-                        usc = new viewSewa();
-                        content.Children.Add(usc);
-                        break;
-                    case "ItemPengaturan":
-
-                        break;
-                    case "ItemLogout":
-                        var login = new Window_Login();
-                        this.Close();
-
-                        login.Show();
-                        break;
-                    default:
-                        break;
+                    
+                    content.Children.Clear();
+                    UserControl usc;
+                    switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+                    {
+                        case "ItemHome":
+                            usc = new viewBeranda();
+                            content.Children.Add(usc);
+                            break;
+                        case "ItemDataKost":
+                            usc = new viewDataKost();
+                            content.Children.Add(usc);
+                            
+                            break;
+                        case "ItemDataKamar":
+                            usc = new viewDataKamar();
+                            content.Children.Add(usc);
+                            break;
+                        case "ItemDataCustomer":
+                            usc = new viewCustomer();
+                            content.Children.Add(usc);
+                            break;
+                        case "ItemSewa":
+                            usc = new viewSewa();
+                            content.Children.Add(usc);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }catch(Exception ex)
+                
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("error di "+ex);
             }
@@ -95,6 +94,37 @@ namespace KOST_APP
         private void ItemHome_Selected(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void ListViewOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                await Task.Delay(100);
+                ListViewMenu.UnselectAll();
+
+                if (ListViewOption.SelectedItem != null)
+                {
+                    content.Children.Clear();
+                    UserControl usc;
+                    switch (((ListViewItem) ((ListView) sender).SelectedItem).Name)
+                    {
+                        case "ItemPengaturan":
+                            break;
+                        case "ItemLogout":
+                            var login = new Window_Login();
+                            this.Close();
+                            login.Show();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error di " + ex);
+            }
         }
     }
 }

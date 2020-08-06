@@ -497,11 +497,11 @@
                                 </ListViewItem>
                             </ListView>
                             <ListView
+                                x:Name="ListViewOption"
                                 VerticalAlignment="Bottom"
                                 DockPanel.Dock="Bottom"
                                 Foreground="{DynamicResource MaterialDesignBody}"
-                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                SelectionChanged="ListViewMenu_SelectionChanged">
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewOption_SelectionChanged">
                                 <ListViewItem
                                     x:Name="ItemPengaturan"
                                     Height="60"
