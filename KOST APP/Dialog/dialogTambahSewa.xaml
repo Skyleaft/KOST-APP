@@ -1,0 +1,238 @@
+﻿<UserControl
+    x:Class="KOST_APP.Dialog.dialogTambahSewa"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:blurry="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:KOST_APP.Dialog"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="550"
+    d:DesignWidth="600"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{materialDesign:MaterialDesignFont}"
+    TextElement.FontSize="14"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    mc:Ignorable="d">
+    <materialDesign:DialogHost Identifier="SubDialogSewa">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="22*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Width="161"
+                Height="24"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <iconPacks:PackIconMaterial
+                    Width="23"
+                    Height="23"
+                    Kind="Warehouse" />
+                <TextBlock
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody2TextBlock}">
+                    Tambah Data Sewa
+                </TextBlock>
+            </StackPanel>
+            <StackPanel
+                Width="60"
+                Height="32"
+                Margin="525,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+
+                <Button
+                    Width="60"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    ToolTip="Close">
+                    <materialDesign:PackIcon
+                        Width="24"
+                        Height="24"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Kind="Close" />
+                </Button>
+            </StackPanel>
+
+            <DockPanel
+                Grid.Row="1"
+                Width="456"
+                HorizontalAlignment="Center">
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="20,50,20,50"
+                    DockPanel.Dock="Top">
+
+
+                    <StackPanel
+                        Margin="15,0,15,15"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <iconPacks:PackIconFontAwesome
+                            Width="23"
+                            Height="23"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=txt_nama}"
+                            Kind="UserAltSolid" />
+                        <TextBox
+                            x:Name="txt_nama"
+                            Width="260"
+                            Margin="5,0,0,0"
+                            materialDesign:HintAssist.Hint="Nama"
+                            FontSize="16"
+                            MaxLength="15" />
+                        <Button
+                            x:Name="btn_caricust"
+                            Margin="5,0,0,0"
+                            Click="btn_caricust_Click"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Ubah Data">
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="22"
+                                    Height="22"
+                                    Margin="0,0,5,0"
+                                    Kind="Search" />
+                                <TextBlock VerticalAlignment="Center">Cari</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Margin="15,0,15,15" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="25"
+                            Height="25"
+                            Margin="4,0,10,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=tgl_lahir}"
+                            Kind="DateRange" />
+                        <DatePicker
+                            x:Name="tgl_lahir"
+                            Width="260"
+                            materialDesign:HintAssist.Hint="Tanggal Checkin"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    </StackPanel>
+
+                    <StackPanel Margin="15,1,15,15" Orientation="Vertical">
+                        <StackPanel Margin="1,0,15,0" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="4,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=tgl_lahir}"
+                                Kind="DateRange" />
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Bottom"
+                                Text="Lama Sewa" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Width="25"
+                                Height="25"
+                                Margin="40,0,5,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Text="{Binding Value, ElementName=slider_lama}" />
+                            <TextBlock
+                                Height="17"
+                                Margin="0,0,5,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                Text="Bulan" />
+                            <Slider
+                                x:Name="slider_lama"
+                                Width="200"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Stretch"
+                                Maximum="60"
+                                Minimum="1"
+                                Orientation="Horizontal"
+                                Style="{StaticResource MaterialDesignDiscreteSlider}"
+                                ToolTip="MaterialDesignDiscreteSlider"
+                                Value="12" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel
+                        Margin="15,0,15,15"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <iconPacks:PackIconFontAwesome
+                            Width="23"
+                            Height="23"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=txt_kamar}"
+                            Kind="UserAltSolid" />
+                        <TextBox
+                            x:Name="txt_kamar"
+                            Width="260"
+                            Margin="5,0,0,0"
+                            materialDesign:HintAssist.Hint="Kamar"
+                            FontSize="16"
+                            MaxLength="15" />
+                        <Button
+                            x:Name="btn_carikamar"
+                            Margin="5,0,0,0"
+                            Click="btn_carikamar_Click"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Ubah Data">
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="22"
+                                    Height="22"
+                                    Margin="0,0,5,0"
+                                    Kind="Search" />
+                                <TextBlock VerticalAlignment="Center">Cari</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel
+                    Margin="0,15,-50,10"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Orientation="Horizontal">
+                    <Button
+                        Width="100"
+                        Margin="0,0,5,0"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        Content="Batal"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="Batal" />
+                    <Button
+                        x:Name="btn_simpan"
+                        Width="100"
+                        Click="btn_simpan_Click"
+                        Content="Simpan"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        ToolTip="Simpan Data" />
+                </StackPanel>
+            </DockPanel>
+        </Grid>
+    </materialDesign:DialogHost>
+</UserControl>

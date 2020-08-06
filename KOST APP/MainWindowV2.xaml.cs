@@ -56,6 +56,10 @@ namespace KOST_APP
                         usc = new viewCustomer();
                         content.Children.Add(usc);
                         break;
+                    case "ItemSewa":
+                        usc = new viewSewa();
+                        content.Children.Add(usc);
+                        break;
                     case "ItemPengaturan":
 
                         break;
