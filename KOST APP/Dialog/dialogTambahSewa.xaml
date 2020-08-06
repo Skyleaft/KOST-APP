@@ -170,7 +170,7 @@
                                 Orientation="Horizontal"
                                 Style="{StaticResource MaterialDesignDiscreteSlider}"
                                 ToolTip="MaterialDesignDiscreteSlider"
-                                Value="12" />
+                                Value="6" />
                         </StackPanel>
                     </StackPanel>
 

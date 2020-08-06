@@ -5,6 +5,7 @@
     xmlns:blurry="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
     xmlns:class="clr-namespace:KOST_APP.Class"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:KOST_APP.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -83,10 +84,34 @@
                             </Button>
                         </Grid>
                     </materialDesign:ColorZone>
-
-
-
-
+                    <StackPanel
+                        Margin="15,0,15,0"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Top"
+                        Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial
+                            Width="22"
+                            Height="22"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=cmb_filter}"
+                            Kind="Filter" />
+                        <ComboBox
+                            x:Name="cmb_filter"
+                            Width="auto"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Stretch"
+                            materialDesign:HintAssist.Hint="Filter Berdasarkan"
+                            IsEditable="False"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="cmb_filter_SelectionChanged">
+                            <ComboBoxItem Content="Kamar Kosong" />
+                            <ComboBoxItem Content="Kamar Dihuni" />
+                            <ComboBoxItem Content="Kamar Sedang Perbaikan" />
+                            <ComboBoxItem Content="Harga Terendah" />
+                            <ComboBoxItem Content="Harga Terbesar" />
+                        </ComboBox>
+                    </StackPanel>
                 </StackPanel>
                 <Button
                     x:Name="btn_refresh"

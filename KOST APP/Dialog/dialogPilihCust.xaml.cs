@@ -56,7 +56,9 @@ namespace KOST_APP.Dialog
 
         private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            k.sql = "select * from customer where nama like'%" + txt_cari.Text + "%' or kota like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            lv_customer.ItemsSource = k.dt.DefaultView;
         }
 
         private void btn_pilih_Click(object sender, RoutedEventArgs e)

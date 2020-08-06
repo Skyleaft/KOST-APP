@@ -44,6 +44,7 @@ namespace KOST_APP.Views
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
         {
             showdata();
+            cmb_filter.SelectedItem = null;
         }
 
         private void lv_kamar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,7 +82,41 @@ namespace KOST_APP.Views
 
         private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
         {
+            k.sql = "select * from kamar where nomor_kamar like'" + txt_cari.Text + "%' or biaya like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            lv_kamar.ItemsSource = k.dt.DefaultView;
+        }
 
+        private void cmb_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cmb_filter.SelectedIndex)
+            {
+                case 0:
+                    k.sql = "select * from kamar where status=0";
+                    k.setdt();
+                    lv_kamar.ItemsSource = k.dt.DefaultView;
+                    break;
+                case 1:
+                    k.sql = "select * from kamar where status=1";
+                    k.setdt();
+                    lv_kamar.ItemsSource = k.dt.DefaultView;
+                    break;
+                case 2:
+                    k.sql = "select * from kamar where status=2";
+                    k.setdt();
+                    lv_kamar.ItemsSource = k.dt.DefaultView;
+                    break;
+                case 3:
+                    k.sql = "select * from kamar order by biaya asc";
+                    k.setdt();
+                    lv_kamar.ItemsSource = k.dt.DefaultView;
+                    break;
+                case 4:
+                    k.sql = "select * from kamar order by biaya desc";
+                    k.setdt();
+                    lv_kamar.ItemsSource = k.dt.DefaultView;
+                    break;
+            }
         }
     }
 }

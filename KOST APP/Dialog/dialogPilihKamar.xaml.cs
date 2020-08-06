@@ -38,13 +38,12 @@ namespace KOST_APP.Dialog
                 k.setdt();
 
                 String idkmr = k.dt.Rows[0][0].ToString();
-
             }
         }
 
         public void showdata()
         {
-            k.sql = "select * from kamar";
+            k.sql = "select * from kamar where status = 0";
             k.setdt();
             lv_kamar.ItemsSource = k.dt.DefaultView;
 
@@ -52,7 +51,9 @@ namespace KOST_APP.Dialog
 
         private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            k.sql = "select * from kamar where nomor_kamar like'%" + txt_cari.Text + "%' or biaya like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            lv_kamar.ItemsSource = k.dt.DefaultView;
         }
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
