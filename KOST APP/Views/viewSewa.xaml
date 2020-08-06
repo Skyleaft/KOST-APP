@@ -113,11 +113,12 @@
                 materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
                 AutoGenerateColumns="True"
                 AutoGeneratingColumn="dg_sewa_AutoGeneratingColumn"
-                CanUserAddRows="true"
+                CanUserAddRows="false"
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"
-                IsReadOnly="True">
-                <DataGrid.Columns>
+                IsReadOnly="True"
+                SelectionChanged="dg_sewa_SelectionChanged">
+                <!--<DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding id_sewa}" Header="ID Sewa" />
                     <DataGridTextColumn Binding="{Binding nama}" Header="Nama" />
                     <DataGridTextColumn Binding="{Binding kota}" Header="Asal Kota" />
@@ -125,7 +126,7 @@
                     <DataGridTextColumn Binding="{Binding tgl_checkin}" Header="Tanggal Checkin" />
                     <DataGridTextColumn Binding="{Binding nomor_kamar}" Header="Nomor Kamar" />
                     <DataGridTextColumn Binding="{Binding lama_sewa}" Header="Lama Sewa" />
-                </DataGrid.Columns>
+                </DataGrid.Columns>-->
             </DataGrid>
         </DockPanel>
     </Grid>

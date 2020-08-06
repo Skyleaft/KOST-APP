@@ -162,7 +162,7 @@
                                         HorizontalAlignment="Left"
                                         DockPanel.Dock="Top"
                                         FontSize="12"
-                                        Text="{Binding tgl_lahir}"
+                                        Text="{Binding tgl_lahir, StringFormat='dd-MM-yyyy'}"
                                         TextWrapping="Wrap" />
                                 </StackPanel>
 

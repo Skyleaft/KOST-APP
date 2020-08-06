@@ -56,7 +56,7 @@ namespace KOST_APP.Dialog
                     DateTime tgllahir = tgl_lahir.SelectedDate.Value;
                     var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
 
-                    k.sql = "insert into customer values(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11)";
+                    k.sql = "insert into customer values(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12)";
                     k.setparam();
                     k.perintah.Parameters.AddWithValue("@1", null);
                     k.perintah.Parameters.AddWithValue("@2", txt_nik.Text);
@@ -69,6 +69,7 @@ namespace KOST_APP.Dialog
                     k.perintah.Parameters.AddWithValue("@9", cmb_pekerjaan.Text);
                     k.perintah.Parameters.AddWithValue("@10", txt_instansi.Text);
                     k.perintah.Parameters.AddWithValue("@11", img);
+                    k.perintah.Parameters.AddWithValue("@12", 0);
 
                     k.perintah.ExecuteNonQuery();
                     k.close();

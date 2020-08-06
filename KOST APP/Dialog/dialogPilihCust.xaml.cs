@@ -33,7 +33,7 @@ namespace KOST_APP.Dialog
 
         public void showdata()
         {
-            k.sql = "select * from customer";
+            k.sql = "select * from customer where status=0";
             k.setdt();
             lv_customer.ItemsSource = k.dt.DefaultView;
         }
