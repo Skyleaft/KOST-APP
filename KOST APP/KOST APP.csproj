@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Koneksi\settingKoneksi.txt" />
     <None Remove="Resources\2319292edit_burned.png" />
     <None Remove="Resources\attachment_69770604.png" />
   </ItemGroup>
@@ -27,10 +28,14 @@
     <PackageReference Include="MaterialDesignThemes" Version="3.1.3" />
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.1.4" />
     <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="MySqlBackup.NET" Version="2.3.3.1" />
     <PackageReference Include="System.Management" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Koneksi\settingKoneksi.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\2319292edit_burned.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -40,6 +45,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Dialog\dialogSettingDB.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -55,6 +63,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Dialog\dialogSettingDB.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\viewDataKost.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using KOST_APP.Dialog;
 using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 
@@ -24,6 +25,7 @@ namespace KOST_APP
         public Window_Login()
         {
             InitializeComponent();
+            k.loadSetting();
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
@@ -84,7 +86,7 @@ namespace KOST_APP
                 //        sesid = dtime.ToString("ddHHmm") + tambah;
                 //    }
                 //}
-                MainWindow main = new MainWindow();
+                MainWindowV2 main = new MainWindowV2();
                 main.Show();
                 dissapear();
 
@@ -119,6 +121,12 @@ namespace KOST_APP
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void btn_setting_Click(object sender, RoutedEventArgs e)
+        {
+            var showdialog = new dialogSettingDB();
+            DialogHost.Show(showdialog, "LoginDialog");
         }
     }
 }

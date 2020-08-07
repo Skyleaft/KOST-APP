@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal">
                 <GroupBox
                     Width="400"
-                    Height="350"
+                    Height="230"
                     Margin="20,20,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -330,8 +330,8 @@
 
             <StackPanel Orientation="Horizontal">
                 <GroupBox
-                    Width="500"
-                    Height="300"
+                    Width="400"
+                    Height="420"
                     Margin="20,20,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -353,6 +353,186 @@
                             </StackPanel>
                         </DataTemplate>
                     </GroupBox.HeaderTemplate>
+                    <StackPanel Grid.Row="1" Margin="20,5,20,2">
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconModern
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_host}"
+                                Kind="NetworkServerConnecting" />
+                            <TextBox
+                                x:Name="txt_host"
+                                Width="240"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Host"
+                                FontSize="14"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconUnicons
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_port}"
+                                Kind="Server" />
+                            <TextBox
+                                x:Name="txt_port"
+                                Width="240"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Port"
+                                FontSize="14"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconUnicons
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_dbname}"
+                                Kind="Database" />
+                            <TextBox
+                                x:Name="txt_dbname"
+                                Width="240"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Nama Database"
+                                FontSize="14"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconPicolIcons
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_username}"
+                                Kind="UserHalfSecurity" />
+                            <TextBox
+                                x:Name="txt_username"
+                                Width="240"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Username"
+                                FontSize="14"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconPicolIcons
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_password}"
+                                Kind="UserHalfSecurity" />
+                            <TextBox
+                                x:Name="txt_password"
+                                Width="240"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Password"
+                                FontSize="14"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Row="2"
+                            Height="32"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                            <Button
+                                Margin="0,0,5,0"
+                                Content="Kembalikan Default"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                ToolTip="Kembalikan Default" />
+                            <Button
+                                x:Name="btn_simpan"
+                                Width="100"
+                                Click="btn_simpan_Click"
+                                Content="Simpan"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                ToolTip="Simpan Data" />
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </GroupBox>
+
+                <GroupBox
+                    Width="400"
+                    Height="245"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Header="Backup/Restore Database"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Database" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="20,5,20,2"
+                        VerticalAlignment="Center">
+                        <Button x:Name="btn_backup"
+                            Height="50"
+                            Margin="20,0,20,0"
+                            materialDesign:ButtonAssist.CornerRadius="25"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            ToolTip="Backup Database ke dalam File" Click="btn_backup_Click">
+                            <TextBlock Text="Backup Database" />
+                        </Button>
+                        <Button x:Name="btn_restore"
+                            Height="50"
+                            Margin="20,15,20,0"
+                            materialDesign:ButtonAssist.CornerRadius="25"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            ToolTip="Backup Database ke dalam File" Click="btn_restore_Click">
+                            <TextBlock Text="Restore Database" />
+                        </Button>
+                    </StackPanel>
 
                 </GroupBox>
             </StackPanel>

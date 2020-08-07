@@ -57,22 +57,22 @@ namespace KOST_APP.Views
             int tambah;
             if (cekbaris == 0)
             {
-                baru = "INV"+DateTime.Now.ToString("dd")+"-001"+"M"+ DateTime.Now.ToString("MM");
+                baru = "INV"+DateTime.Now.ToString("dd")+"-001-"+"M"+ DateTime.Now.ToString("MM");
             }
             else
             {
                 tambah = Convert.ToInt32(k.dt.Rows[cekbaris - 1][0].ToString().Split('-')[1]) + 1;
                 if (tambah < 10)
                 {
-                    baru = "INV" + DateTime.Now.ToString("dd") + "-00" + tambah + "M" + DateTime.Now.ToString("MM");
+                    baru = "INV" + DateTime.Now.ToString("dd") + "-00" + tambah + "-M" + DateTime.Now.ToString("MM");
                 }
                 else if (tambah < 100)
                 {
-                    baru = "INV" + DateTime.Now.ToString("dd") + "-0" + tambah + "M" + DateTime.Now.ToString("MM");
+                    baru = "INV" + DateTime.Now.ToString("dd") + "-0" + tambah + "-M" + DateTime.Now.ToString("MM");
                 }
                 else
                 {
-                    baru = "INV" + DateTime.Now.ToString("dd") + "-" + tambah + "M" + DateTime.Now.ToString("MM");
+                    baru = "INV" + DateTime.Now.ToString("dd") + "-" + tambah + "-M" + DateTime.Now.ToString("MM");
                 }
             }
             txt_invoice.Text = baru;
@@ -97,45 +97,13 @@ namespace KOST_APP.Views
 
         private void btn_bayar_Click(object sender, RoutedEventArgs e)
         {
-            var showdialog = new dialogBayar(total,invoice);
-            showdialog.Check += value => status = value;
-            showdialog.Check2 += value => tunai = value;
-            showdialog.Check3 += value => kembali = value;
+            var showdialog = new dialogBayar(total,invoice,tgl_bayar.SelectedDate.Value,idSewa);
             DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
         }
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            try
-            {
-                DateTime tglBayar = tgl_bayar.SelectedDate.Value;
-                k.sql = "insert into pembayaran values(@1,@2,@3,@4,@5,@6,@7)";
-                k.setparam();
-                k.perintah.Parameters.AddWithValue("@1", invoice);
-                k.perintah.Parameters.AddWithValue("@2", tglBayar.ToString("yyyy-MM-dd"));
-                k.perintah.Parameters.AddWithValue("@3", total);
-                k.perintah.Parameters.AddWithValue("@4", idSewa);
-                k.perintah.Parameters.AddWithValue("@5", status);
-                k.perintah.Parameters.AddWithValue("@6", tunai);
-                k.perintah.Parameters.AddWithValue("@7", kembali);
-
-                k.perintah.ExecuteNonQuery();
-                k.close();
-
-
-
-                DialogHost.CloseDialogCommand.Execute(null, this);
-                var sampleMessageDialog = new SampleMessageDialog
-                {
-                    Message = { Text = "Data Berhasil Tersimpan" }
-                };
-                DialogHost.Show(sampleMessageDialog, "MainDialog");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Data Gagal Didaftarkan " + ex);
-            }
+            
             showdata();
         }
 

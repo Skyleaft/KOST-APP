@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignColors.WpfExample.Domain;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,12 +24,22 @@ namespace KOST_APP.Dialog
         public event Action<int> Check2;
         public event Action<int> Check3;
 
-        public dialogBayar(int _total,String _invoice)
+        private decimal kembali;
+
+        private int total;
+        DateTime tglBayar;
+        String noSewa;
+
+        koneksi k = new koneksi();
+        public dialogBayar(int _total,String _invoice,DateTime _tglBayar,String _noSewa)
         {
             InitializeComponent();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("id-ID");
 
+            tglBayar = _tglBayar;
+            total = _total;
+            noSewa = _noSewa;
             txt_total.Text= Convert.ToDecimal(_total).ToString("c");
             txt_invoice.Text = _invoice;
             txt_tunai.Text = Convert.ToDecimal(0).ToString("c");
@@ -41,11 +52,38 @@ namespace KOST_APP.Dialog
         private void btn_bayar_Click(object sender, RoutedEventArgs e)
         {
             int tunai = int.Parse(txt_tunai.Text, System.Globalization.NumberStyles.Currency);
-            int kembali = int.Parse(txt_kembali.Text, System.Globalization.NumberStyles.Currency);
-            Check(1);
-            Check2(tunai);
-            Check3(kembali);
-            DialogHost.CloseDialogCommand.Execute(null, this);
+            kembali = int.Parse(txt_kembali.Text, System.Globalization.NumberStyles.Currency);
+
+            try
+            {
+                k.sql = "insert into pembayaran values(@1,@2,@3,@4,@5,@6,@7)";
+                k.setparam();
+                k.perintah.Parameters.AddWithValue("@1", txt_invoice.Text);
+                k.perintah.Parameters.AddWithValue("@2", tglBayar.ToString("yyyy-MM-dd"));
+                k.perintah.Parameters.AddWithValue("@3", total);
+                k.perintah.Parameters.AddWithValue("@4", noSewa);
+                k.perintah.Parameters.AddWithValue("@5", 1);
+                k.perintah.Parameters.AddWithValue("@6", tunai);
+                k.perintah.Parameters.AddWithValue("@7", kembali);
+
+                k.perintah.ExecuteNonQuery();
+                k.close();
+
+
+                DialogHost.CloseDialogCommand.Execute(null, this);
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Data Berhasil Tersimpan" }
+                };
+
+                DialogHost.Show(sampleMessageDialog, "MainDialog");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Data Gagal Didaftarkan " + ex);
+            }
+
+            
         }
 
         private void txt_tunai_TextChanged(object sender, TextChangedEventArgs e)
@@ -62,6 +100,15 @@ namespace KOST_APP.Dialog
                 //a = UInt32.Parse(txt_biaya.Text, System.Globalization.NumberStyles.Currency);
 
                 txt_tunai.SelectionStart = txt_tunai.Text.Length - 3; // menetapkan titik awal dari teks yang dipilih pada textbox
+                kembali = decimal.Parse(txt_tunai.Text, System.Globalization.NumberStyles.Currency) - decimal.Parse(txt_total.Text, System.Globalization.NumberStyles.Currency);
+                if (kembali >= decimal.Parse(txt_total.Text, System.Globalization.NumberStyles.Currency))
+                {
+                    txt_kembali.Text = Convert.ToDecimal(kembali).ToString("c");
+                }
+                else
+                {
+                    txt_kembali.Text = Convert.ToDecimal(0).ToString("c");
+                }
             }
         }
 

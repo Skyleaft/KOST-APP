@@ -24,11 +24,23 @@ namespace KOST_APP.Views
     /// </summary>
     public partial class viewPengaturan : UserControl
     {
+        koneksi k = new koneksi();
         public viewPengaturan()
         {
             InitializeComponent();
+            loadData();
 
 
+        }
+
+        private void loadData()
+        {
+            k.setDB();
+            txt_host.Text = k.res.Rows[0][0].ToString();
+            txt_port.Text = k.res.Rows[0][1].ToString();
+            txt_dbname.Text = k.res.Rows[0][2].ToString();
+            txt_username.Text = k.res.Rows[0][3].ToString();
+            txt_password.Text = k.res.Rows[0][4].ToString();
         }
 
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
@@ -53,6 +65,21 @@ namespace KOST_APP.Views
             {
                 ToggleBaseColour(false);
             }
+        }
+
+        private void btn_simpan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_backup_Click(object sender, RoutedEventArgs e)
+        {
+            k.backupDB();
+        }
+
+        private void btn_restore_Click(object sender, RoutedEventArgs e)
+        {
+            k.restoreDB();
         }
     }
 }

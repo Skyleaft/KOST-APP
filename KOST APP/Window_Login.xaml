@@ -180,7 +180,25 @@
                         Grid.Column="1"
                         Margin="0,20,-15,0"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Top">
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="btn_setting"
+                            Width="70"
+                            Margin="0,0,5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Click="btn_setting_Click"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="Pengaturan Koneksi">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Kind="Settings" />
+                        </Button>
                         <Button
                             x:Name="btn_close"
                             Width="70"
@@ -189,7 +207,7 @@
                             VerticalAlignment="Top"
                             Click="btn_close_Click"
                             Style="{StaticResource MaterialDesignFlatButton}"
-                            ToolTip="Batal Login">
+                            ToolTip="Keluar">
                             <materialDesign:PackIcon
                                 Width="28"
                                 Height="28"
