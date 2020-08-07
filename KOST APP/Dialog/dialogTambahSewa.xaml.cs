@@ -72,6 +72,12 @@ namespace KOST_APP.Dialog
                     k.perintah.ExecuteNonQuery();
                     k.close();
 
+                    k.sql = "update customer set status= 1 where id_customer='"+idCust+"'";
+                    k.setdt();
+
+                    k.sql = "update kamar set status= 1 where id_kamar='" + idKamar + "'";
+                    k.setdt();
+
                     DialogHost.CloseDialogCommand.Execute(null, this);
                     var sampleMessageDialog = new SampleMessageDialog
                     {

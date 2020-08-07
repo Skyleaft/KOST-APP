@@ -27,7 +27,7 @@
             VerticalAlignment="Stretch"
             materialDesign:ShadowAssist.ShadowDepth="Depth2"
             materialDesign:ShadowAssist.ShadowEdges="Bottom"
-            Mode="Light">
+            Background="{DynamicResource MaterialDesignCardBackground}">
             <DockPanel>
                 <StackPanel
                     Margin="20,5,20,5"

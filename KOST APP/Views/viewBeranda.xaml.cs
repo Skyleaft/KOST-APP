@@ -18,9 +18,27 @@ namespace KOST_APP.Views
     /// </summary>
     public partial class viewBeranda : UserControl
     {
+        koneksi k = new koneksi();
         public viewBeranda()
         {
             InitializeComponent();
+            showdata();
+
+        }
+        public void showdata()
+        {
+            k.sql = "select count(*) from customer where status = 1";
+            k.setdt();
+            lb_jmlpenghuni.Text = k.dt.Rows[0][0].ToString();
+
+            k.sql = "select count(*) from customer";
+            k.setdt();
+            lb_totalCust.Text = k.dt.Rows[0][0].ToString();
+
+            k.sql = "select count(*) from kamar";
+            k.setdt();
+            lb_jmlkamar.Text = k.dt.Rows[0][0].ToString();
+
         }
     }
 }

@@ -137,7 +137,7 @@
                                 Margin="4,0,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch"
-                                Foreground="{Binding BorderBrush, ElementName=tgl_checkin}"
+                                Foreground="#FF707070"
                                 Kind="DateRange" />
                             <TextBlock
                                 Margin="5,0,0,0"
@@ -170,7 +170,7 @@
                                 Minimum="1"
                                 Orientation="Horizontal"
                                 Style="{StaticResource MaterialDesignDiscreteSlider}"
-                                ToolTip="MaterialDesignDiscreteSlider"
+                                ToolTip="Lama Sewa Kamar"
                                 Value="6" />
                         </StackPanel>
                     </StackPanel>

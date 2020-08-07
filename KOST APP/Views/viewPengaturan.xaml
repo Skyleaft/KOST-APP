@@ -1,0 +1,362 @@
+﻿<UserControl
+    x:Class="KOST_APP.Views.viewPengaturan"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:blurry="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+    xmlns:class1="clr-namespace:KOST_APP.Class"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:KOST_APP.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="720"
+    d:DesignWidth="1100"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    Language="id-ID"
+    TextElement.FontSize="13"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <GroupBox
+                    Width="400"
+                    Height="350"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Header="Pengaturan Tema"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Palette" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+
+                    <StackPanel>
+                        <StackPanel Margin="8" Orientation="Horizontal">
+                            <TextBlock>Warna Latar Belakang :</TextBlock>
+                            <TextBlock Margin="3,0,0,0" VerticalAlignment="Center">Light</TextBlock>
+                            <ToggleButton
+                                x:Name="togleDark"
+                                Margin="8,0,16,0"
+                                Click="togleDark_Click" />
+                            <TextBlock VerticalAlignment="Center">Dark</TextBlock>
+                        </StackPanel>
+
+                        <DockPanel
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Margin="0,10,0,0">
+                            <TextBlock Margin="10,10,0,0" DockPanel.Dock="Top">Warna Aplikasi</TextBlock>
+                            <!--<ItemsControl
+                                x:Name="itemsControl"
+                                Margin="20,10,10,10"
+                                HorizontalAlignment="Left">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="5" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <Button
+                                    x:Name="warna_biruindigo"
+                                    Margin="5"
+                                    Background="#3F51B5"
+                                    BorderBrush="#3F51B5"
+                                    Click="warna_biruindigo_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Indigo">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_biru"
+                                    Margin="5"
+                                    Background="#FF2196F3"
+                                    BorderBrush="#FF2196F3"
+                                    Click="warna_biru_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Biru">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_cyan"
+                                    Background="#00BCD4"
+                                    BorderBrush="#00BCD4"
+                                    Click="warna_cyan_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Cyan">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_teal"
+                                    Background="#FF009688"
+                                    BorderBrush="#FF009688"
+                                    Click="warna_teal_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Teal">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_merah"
+                                    Margin="0"
+                                    Background="#FFF44336"
+                                    BorderBrush="#FFF44336"
+                                    Click="warna_merah_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Merah">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_oren"
+                                    Background="#FFFF5722"
+                                    BorderBrush="#FFFF5722"
+                                    Click="warna_oren_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Oranye">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_pink"
+                                    Background="#FFE91E63"
+                                    BorderBrush="#FFE91E63"
+                                    Click="warna_pink_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Pink">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_purple"
+                                    Background="#FF673AB7"
+                                    BorderBrush="#FF673AB7"
+                                    Click="warna_purple_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Ungu">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_ijo"
+                                    Margin="0"
+                                    Background="#FF4CAF50"
+                                    BorderBrush="#FF4CAF50"
+                                    Click="warna_ijo_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Hijau">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_lightgreen"
+                                    Margin="0"
+                                    Background="#8BC34A"
+                                    BorderBrush="#8BC34A"
+                                    Click="warna_lightgreen_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Hijau Terang">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_lime"
+                                    Margin="0"
+                                    Background="#CDDC39"
+                                    BorderBrush="#CDDC39"
+                                    Click="warna_lime_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Lime">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+
+                                <Button
+                                    x:Name="warna_kuning"
+                                    Background="#FFFFEB3B"
+                                    BorderBrush="#FFFFEB3B"
+                                    Click="warna_kuning_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Kuning">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_amber"
+                                    Background="#FFC107"
+                                    BorderBrush="#FFC107"
+                                    Click="warna_amber_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Amber">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+
+
+
+
+                                <Button
+                                    x:Name="warna_blgrey"
+                                    Background="#607D8B"
+                                    BorderBrush="#607D8B"
+                                    Click="warna_blgrey_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Abu">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_brown"
+                                    Background="#795548"
+                                    BorderBrush="#795548"
+                                    Click="warna_brown_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Coklat">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                            </ItemsControl>-->
+                        </DockPanel>
+
+                    </StackPanel>
+
+                </GroupBox>
+
+                <GroupBox
+                    Width="500"
+                    Height="230"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Header="Tentang Aplikasi"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Information" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top">
+                            <TextBlock
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                FontWeight="Bold">
+                                Kost APP
+                            </TextBlock>
+                            <TextBlock Margin="0,0,0,5" HorizontalAlignment="Center">versi 0.1</TextBlock>
+
+                            <TextBlock>dibuat oleh : Milzan Malik</TextBlock>
+                            <TextBlock>NIM : 10118220</TextBlock>
+                            <TextBlock>Universitas Komputer Indonesia</TextBlock>
+
+                            <TextBlock
+                                Margin="0,50,0,0"
+                                HorizontalAlignment="Center"
+                                FontStyle="Italic">
+                                @copyright 2020 Milzan Malik
+                            </TextBlock>
+
+
+
+                        </StackPanel>
+                    </DockPanel>
+
+
+
+                </GroupBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <GroupBox
+                    Width="500"
+                    Height="300"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Header="Pengaturan Database"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Database" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+
+                </GroupBox>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

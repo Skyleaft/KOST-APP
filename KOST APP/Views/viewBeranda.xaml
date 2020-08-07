@@ -49,11 +49,20 @@
                                 Margin="0,25,0,0"
                                 Kind="HouseUserSolid" />
                             <TextBlock
-                                Width="130"
+                                x:Name="lb_jmlpenghuni"
                                 Margin="10,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontSize="24"
+                                TextAlignment="Right">
+                                0
+                            </TextBlock>
+                            <TextBlock
+                                Width="70"
+                                Margin="3,0,0,0"
                                 VerticalAlignment="Center"
                                 FontSize="24">
-                                13 Orang
+                                Orang
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>
@@ -87,11 +96,20 @@
                                 Margin="0,25,0,0"
                                 Kind="Bed" />
                             <TextBlock
-                                Width="130"
+                                x:Name="lb_jmlkamar"
                                 Margin="10,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontSize="24"
+                                TextAlignment="Right">
+                                0
+                            </TextBlock>
+                            <TextBlock
+                                Width="70"
+                                Margin="3,0,0,0"
                                 VerticalAlignment="Center"
                                 FontSize="24">
-                                18 Kamar
+                                Kamar
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>
@@ -125,11 +143,20 @@
                                 Margin="0,25,0,0"
                                 Kind="User" />
                             <TextBlock
-                                Width="120"
+                                x:Name="lb_totalCust"
                                 Margin="10,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontSize="24"
+                                TextAlignment="Right">
+                                0
+                            </TextBlock>
+                            <TextBlock
+                                Width="70"
+                                Margin="3,0,0,0"
                                 VerticalAlignment="Center"
                                 FontSize="24">
-                                36 Orang
+                                Orang
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>

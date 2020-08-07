@@ -28,7 +28,7 @@
             VerticalAlignment="Stretch"
             materialDesign:ShadowAssist.ShadowDepth="Depth2"
             materialDesign:ShadowAssist.ShadowEdges="Bottom"
-            Mode="Light">
+            Background="{DynamicResource MaterialDesignCardBackground}">
             <DockPanel>
                 <StackPanel
                     Margin="20,5,20,5"
@@ -104,7 +104,8 @@
                             VerticalAlignment="Stretch"
                             materialDesign:HintAssist.Hint="Filter Berdasarkan"
                             IsEditable="False"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="cmb_filter_SelectionChanged">
+                            SelectionChanged="cmb_filter_SelectionChanged"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                             <ComboBoxItem Content="Kamar Kosong" />
                             <ComboBoxItem Content="Kamar Dihuni" />
                             <ComboBoxItem Content="Kamar Sedang Perbaikan" />

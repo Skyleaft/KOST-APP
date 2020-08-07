@@ -110,6 +110,8 @@ namespace KOST_APP
                     switch (((ListViewItem) ((ListView) sender).SelectedItem).Name)
                     {
                         case "ItemPengaturan":
+                            usc = new viewPengaturan();
+                            content.Children.Add(usc);
                             break;
                         case "ItemLogout":
                             var login = new Window_Login();
