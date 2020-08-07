@@ -450,12 +450,11 @@
                                     Height="60"
                                     Style="{StaticResource CustomMenu}">
                                     <StackPanel Orientation="Horizontal">
-                                        <StackPanel Margin="10">
-                                            <iconPacks:FontAwesome
-                                                Width="25"
-                                                Height="25"
-                                                Kind="HouseUserSolid" />
-                                        </StackPanel>
+                                        <iconPacks:PackIconFontAwesome
+                                            Width="25"
+                                            Height="25"
+                                            Margin="10"
+                                            Kind="HouseUserSolid" />
                                         <TextBlock
                                             Margin="20,10"
                                             VerticalAlignment="Center"
@@ -493,6 +492,22 @@
                                             Margin="20,10"
                                             VerticalAlignment="Center"
                                             Text="Sewa Kamar" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem
+                                    x:Name="ItemBayar"
+                                    Height="60"
+                                    Style="{StaticResource CustomMenu}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <iconPacks:PackIconFontAwesome
+                                            Width="25"
+                                            Height="25"
+                                            Margin="10"
+                                            Kind="CashRegisterSolid" />
+                                        <TextBlock
+                                            Margin="20,10"
+                                            VerticalAlignment="Center"
+                                            Text="Pembayaran" />
                                     </StackPanel>
                                 </ListViewItem>
                             </ListView>

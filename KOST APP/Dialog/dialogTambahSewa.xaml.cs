@@ -27,6 +27,7 @@ namespace KOST_APP.Dialog
         public dialogTambahSewa()
         {
             InitializeComponent();
+            tgl_checkin.SelectedDate = DateTime.Now;
         }
 
         private void btn_caricust_Click(object sender, RoutedEventArgs e)
