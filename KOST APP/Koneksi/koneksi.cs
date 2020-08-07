@@ -49,6 +49,7 @@ namespace KOST_APP
                 }
                 dt.Rows.Add(dr);
             }
+            sr.Close();
             return dt;
         }
 
@@ -56,7 +57,6 @@ namespace KOST_APP
         {
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             string fileName = Path.Combine(path, "settingKoneksi.csv");
-            List<String> lines = new List<String>();
 
             if (!File.Exists(fileName))
             {
@@ -84,10 +84,12 @@ namespace KOST_APP
                         IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
                         sb.AppendLine(string.Join(",", fields));
                     }
-
+                    fs.Close();
                     File.WriteAllText("settingKoneksi.csv", sb.ToString());
+                    
                 }
             }
+            
         }
 
         public void backupDB()
@@ -128,6 +130,37 @@ namespace KOST_APP
                     }
                 }
             }
+        }
+
+        public void saveSetting()
+        {
+            string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
+            string fileName = Path.Combine(path, "settingKoneksi.csv");
+
+            if (File.Exists(fileName))
+            {
+                using (StreamWriter writer = new StreamWriter(fileName, false))
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    IEnumerable<string> columnNames = res.Columns.Cast<DataColumn>().
+                                                      Select(column => column.ColumnName);
+                    sb.AppendLine(string.Join(",", columnNames));
+
+                    foreach (DataRow row in res.Rows)
+                    {
+                        IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                        sb.AppendLine(string.Join(",", fields));
+                    }
+
+                    writer.Write(sb.ToString());
+                    writer.Close();
+                }
+            }
+
+
+
+
         }
 
 

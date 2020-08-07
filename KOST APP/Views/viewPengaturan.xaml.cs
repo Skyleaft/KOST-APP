@@ -69,7 +69,38 @@ namespace KOST_APP.Views
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
+            if (txt_host.Text == "" || txt_port.Text == "" || txt_dbname.Text == "")
+            {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Lengkapi Dulu Data" }
+                };
+                DialogHost.Show(sampleMessageDialog, "SubDialogDB");
+            }
+            else
+            {
+                try
+                {
+                    k.setDB();
+                    k.res.Rows[0][0] = txt_host.Text;
+                    k.res.Rows[0][1] = txt_port.Text;
+                    k.res.Rows[0][2] = txt_dbname.Text;
+                    k.res.Rows[0][3] = txt_username.Text;
+                    k.res.Rows[0][4] = txt_password.Text;
+                    k.saveSetting();
+                    DialogHost.CloseDialogCommand.Execute(null, this);
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Pengaturan Koneksi Berhasil Diubah" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "LoginDialog");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error " + ex);
+                }
 
+            }
         }
 
         private void btn_backup_Click(object sender, RoutedEventArgs e)

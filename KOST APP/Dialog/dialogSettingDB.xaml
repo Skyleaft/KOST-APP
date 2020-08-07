@@ -16,7 +16,7 @@
     TextElement.FontWeight="Medium"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     mc:Ignorable="d">
-    <materialDesign:DialogHost Identifier="SubDialogKamar">
+    <materialDesign:DialogHost Identifier="SubDialogDB">
         <Grid
             Width="350"
             Height="380"
