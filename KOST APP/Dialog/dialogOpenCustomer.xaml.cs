@@ -123,7 +123,7 @@ namespace KOST_APP.Dialog
                 k.perintah.Parameters.AddWithValue("@7", cmb_pekerjaan.Text);
                 k.perintah.Parameters.AddWithValue("@8", txt_instansi.Text);
                 k.perintah.Parameters.AddWithValue("@9", img);
-                k.perintah.Parameters.AddWithValue("@10", txt_nik);
+                k.perintah.Parameters.AddWithValue("@10", txt_nik.Text);
 
                 k.perintah.ExecuteNonQuery();
                 k.close();

@@ -69,6 +69,10 @@ namespace KOST_APP
                             usc = new viewPembayaran();
                             content.Children.Add(usc);
                             break;
+                        case "ItemLaporan":
+                            usc = new viewLaporan();
+                            content.Children.Add(usc);
+                            break;
                         default:
                             break;
                     }

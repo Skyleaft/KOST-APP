@@ -178,12 +178,19 @@ namespace KOST_APP
 
         public void setdt()
         {
-            setDB();
-            dbkoneksi = new MySqlConnection(db);
-            perintah = new MySqlCommand(sql, dbkoneksi);
-            dt = new DataTable();
-            da = new MySqlDataAdapter(perintah);
-            da.Fill(dt);
+            try
+            {
+                setDB();
+                dbkoneksi = new MySqlConnection(db);
+                perintah = new MySqlCommand(sql, dbkoneksi);
+                dt = new DataTable();
+                da = new MySqlDataAdapter(perintah);
+                da.Fill(dt);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error Koneksi :"+ex);
+            }
         }
 
         public void setds()

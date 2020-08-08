@@ -20,204 +20,384 @@
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel
-            Grid.Row="1"
-            Margin="20,10,20,20"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
 
-            <StackPanel
-                Margin="15,0,15,15"
+        <StackPanel Orientation="Horizontal">
+            <GroupBox
+                Width="400"
+                Height="530"
+                Margin="30,30,0,0"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Orientation="Horizontal">
-                <iconPacks:PackIconFontAwesome
-                    Width="25"
-                    Height="25"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_nama}"
-                    Kind="UserAltSolid" />
-                <TextBox
-                    x:Name="txt_nama"
-                    Width="300"
-                    Margin="5,0,0,0"
-                    materialDesign:HintAssist.Hint="Nama"
-                    FontSize="16"
-                    MaxLength="15" />
-            </StackPanel>
+                Header="Data Kostan"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="BedSolid" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <StackPanel Grid.Row="1" Margin="20,5,20,2">
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
 
-            <StackPanel Margin="15,0,15,15" Orientation="Horizontal">
-                <materialDesign:PackIcon
-                    Width="25"
-                    Height="25"
-                    Margin="4,0,10,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=tgl_lahir}"
-                    Kind="DateRange" />
-                <DatePicker
-                    x:Name="tgl_lahir"
-                    Width="150"
-                    materialDesign:HintAssist.Hint="Tanggal Lahir"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-            </StackPanel>
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_nama}"
+                                Kind="BedSolid" />
+                            <TextBox
+                                x:Name="txt_nama"
+                                Width="280  "
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Nama Kost"
+                                FontSize="16"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
 
-            <StackPanel
-                Margin="15,0,15,15"
-                VerticalAlignment="Top"
-                Orientation="Horizontal">
-                <materialDesign:PackIcon
-                    Width="25"
-                    Height="25"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="#FF747474"
-                    Kind="GenderMaleFemale" />
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="rb_laki"
-                        Margin="5,5,0,5"
-                        Content="Laki - Laki"
-                        FontSize="14"
-                        Style="{StaticResource MaterialDesignRadioButton}"
-                        Tag="True" />
-                    <RadioButton
-                        x:Name="rb_perempuan"
-                        Margin="10,5,0,5"
-                        Content="Perempuan"
-                        FontSize="14"
-                        Style="{StaticResource MaterialDesignRadioButton}"
-                        Tag="True" />
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_telp}"
+                                Kind="PhoneSolid" />
+                            <TextBox
+                                x:Name="txt_telp"
+                                Width="280"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Telp/No HP"
+                                FontSize="16"
+                                MaxLength="50"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_kota}"
+                                Kind="CitySolid" />
+                            <TextBox
+                                x:Name="txt_kota"
+                                Width="280"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Kota"
+                                FontSize="16"
+                                MaxLength="50"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_kdpos}"
+                                Kind="CitySolid" />
+                            <TextBox
+                                x:Name="txt_kdpos"
+                                Width="280"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Kode Pos"
+                                FontSize="16"
+                                MaxLength="50"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="23"
+                                Height="23"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_alamat}"
+                                Kind="AddressMarker" />
+                            <TextBox
+                                x:Name="txt_alamat"
+                                Width="280"
+                                Height="60"
+                                MaxWidth="300"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Stretch"
+                                materialDesign:HintAssist.Hint="Alamat"
+                                AcceptsReturn="True"
+                                SpellCheck.IsEnabled="True"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconBoxIcons
+                                Width="23"
+                                Height="23"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_deskripsi}"
+                                Kind="RegularDetail" />
+                            <TextBox
+                                x:Name="txt_deskripsi"
+                                Width="280"
+                                Height="60"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Stretch"
+                                materialDesign:HintAssist.Hint="Deskripsi Kostan"
+                                AcceptsReturn="True"
+                                SpellCheck.IsEnabled="True"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto" />
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="2"
+                        Height="32"
+                        Margin="0,10,10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="btn_simpan1"
+                            Width="100"
+                            Click="btn_simpan1_Click"
+                            Content="Simpan"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Simpan Data" />
+                    </StackPanel>
+
                 </StackPanel>
-            </StackPanel>
 
-            <StackPanel
-                Margin="15,0,15,15"
+            </GroupBox>
+
+            <GroupBox
+                Width="420"
+                Height="430"
+                Margin="30,30,0,0"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Orientation="Horizontal">
-                <iconPacks:PackIconFontAwesome
-                    Width="22"
-                    Height="22"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_telp}"
-                    Kind="PhoneSolid" />
-                <TextBox
-                    x:Name="txt_telp"
-                    Width="300"
-                    Margin="5,0,0,0"
-                    materialDesign:HintAssist.Hint="Telp/No HP"
-                    FontSize="16"
-                    MaxLength="50" />
+                Header="Data Pemilik"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="BedSolid" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <StackPanel Grid.Row="1" Margin="20,5,20,2">
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
 
-            </StackPanel>
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_nik}"
+                                Kind="AddressCardRegular" />
+                            <TextBox
+                                x:Name="txt_nik"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="NIK"
+                                FontSize="16"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
 
-            <StackPanel
-                Margin="15,0,15,15"
-                VerticalAlignment="Top"
-                Orientation="Horizontal">
-                <iconPacks:PackIconFontAwesome
-                    Width="22"
-                    Height="22"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_asalkota}"
-                    Kind="CitySolid" />
-                <TextBox
-                    x:Name="txt_asalkota"
-                    Width="300"
-                    Margin="5,0,0,0"
-                    materialDesign:HintAssist.Hint="Asal Kota"
-                    FontSize="16"
-                    MaxLength="50" />
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_namaPemilik}"
+                                Kind="BedSolid" />
+                            <TextBox
+                                x:Name="txt_namaPemilik"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Nama Pemilik"
+                                FontSize="16"
+                                MaxLength="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
 
-            </StackPanel>
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="#FF747474"
+                                Kind="GenderMaleFemale" />
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton
+                                    x:Name="rb_laki"
+                                    Margin="5,5,0,5"
+                                    Content="Laki - Laki"
+                                    FontSize="14"
+                                    Style="{StaticResource MaterialDesignRadioButton}"
+                                    Tag="True" />
+                                <RadioButton
+                                    x:Name="rb_perempuan"
+                                    Margin="10,5,0,5"
+                                    Content="Perempuan"
+                                    FontSize="14"
+                                    Style="{StaticResource MaterialDesignRadioButton}"
+                                    Tag="True" />
+                            </StackPanel>
+                        </StackPanel>
 
-            <StackPanel
-                Margin="15,0,15,15"
-                VerticalAlignment="Top"
-                Orientation="Horizontal">
-                <materialDesign:PackIcon
-                    Width="23"
-                    Height="23"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_alamat}"
-                    Kind="AddressMarker" />
-                <TextBox
-                    x:Name="txt_alamat"
-                    Width="300"
-                    Height="60"
-                    MaxWidth="300"
-                    Margin="5,0,0,0"
-                    VerticalAlignment="Stretch"
-                    materialDesign:HintAssist.Hint="Alamat Asal"
-                    AcceptsReturn="True"
-                    SpellCheck.IsEnabled="True"
-                    TextWrapping="Wrap"
-                    VerticalScrollBarVisibility="Auto" />
-            </StackPanel>
 
-            <StackPanel
-                Margin="15,0,15,15"
-                VerticalAlignment="Top"
-                DockPanel.Dock="Top"
-                Orientation="Horizontal">
-                <iconPacks:PackIconMaterial
-                    Width="22"
-                    Height="22"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=cmb_pekerjaan}"
-                    Kind="AccountTie" />
-                <ComboBox
-                    x:Name="cmb_pekerjaan"
-                    Width="auto"
-                    Margin="5,0,0,0"
-                    VerticalAlignment="Stretch"
-                    materialDesign:HintAssist.Hint="Pilih Pekerjaan"
-                    IsEditable="False"
-                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    <ComboBoxItem Content="Belum / Tidak Bekerja" />
-                    <ComboBoxItem Content="Mahasiswa / Pelajar" />
-                    <ComboBoxItem Content="Pensiunan" />
-                    <ComboBoxItem Content="Pegawai Negeri Sipil" />
-                    <ComboBoxItem Content="Tentara Nasional Indonesia" />
-                    <ComboBoxItem Content="Kepolisian RI" />
-                    <ComboBoxItem Content="Perdagangan" />
-                    <ComboBoxItem Content="Karyawan Swasta" />
-                    <ComboBoxItem Content="Karyawan BUMN" />
-                </ComboBox>
-            </StackPanel>
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome
+                                Width="22"
+                                Height="22"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_telp2}"
+                                Kind="PhoneSolid" />
+                            <TextBox
+                                x:Name="txt_telp2"
+                                Width="300"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Telp/No HP"
+                                FontSize="16"
+                                MaxLength="50"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-            <StackPanel
-                Margin="15,0,15,15"
-                VerticalAlignment="Top"
-                Orientation="Horizontal">
-                <iconPacks:PackIconMaterial
-                    Width="22"
-                    Height="22"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_instansi}"
-                    Kind="Domain" />
-                <TextBox
-                    x:Name="txt_instansi"
-                    Width="300"
-                    Margin="5,0,0,0"
-                    materialDesign:HintAssist.Hint="Nama Instansi"
-                    FontSize="16"
-                    MaxLength="50" />
+                        </StackPanel>
 
-            </StackPanel>
 
+
+
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="23"
+                                Height="23"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_alamat2}"
+                                Kind="AddressMarker" />
+                            <TextBox
+                                x:Name="txt_alamat2"
+                                Width="300"
+                                Height="60"
+                                MaxWidth="300"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Stretch"
+                                materialDesign:HintAssist.Hint="Alamat"
+                                AcceptsReturn="True"
+                                SpellCheck.IsEnabled="True"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto" />
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="2"
+                        Height="32"
+                        Margin="0,10,10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="btn_simpan2"
+                            Width="100"
+                            Click="btn_simpan2_Click"
+                            Content="Simpan"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Simpan Data" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -510,6 +510,22 @@
                                             Text="Pembayaran" />
                                     </StackPanel>
                                 </ListViewItem>
+                                <ListViewItem
+                                    x:Name="ItemLaporan"
+                                    Height="60"
+                                    Style="{StaticResource CustomMenu}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <iconPacks:PackIconUnicons
+                                            Width="25"
+                                            Height="25"
+                                            Margin="10"
+                                            Kind="FileGraph" />
+                                        <TextBlock
+                                            Margin="20,10"
+                                            VerticalAlignment="Center"
+                                            Text="Laporan Penjualan" />
+                                    </StackPanel>
+                                </ListViewItem>
                             </ListView>
                             <ListView
                                 x:Name="ListViewOption"

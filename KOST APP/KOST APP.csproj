@@ -54,6 +54,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\viewLaporan.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +76,13 @@
     <Page Update="Views\viewDataKamar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\viewLaporan.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Report\" />
   </ItemGroup>
 
 </Project>
