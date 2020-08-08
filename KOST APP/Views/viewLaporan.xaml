@@ -203,7 +203,6 @@
                             Height="40"
                             Margin="25,5,25,10"
                             materialDesign:ButtonAssist.CornerRadius="15"
-                            Click="btn_bayar_Click"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             ToolTip="Cetak Laporan">
                             <TextBlock Text="Cetak Dipilih" />
@@ -246,7 +245,6 @@
                             Height="40"
                             Margin="25,5,25,10"
                             materialDesign:ButtonAssist.CornerRadius="15"
-                            Click="btn_bayar_Click"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             ToolTip="Cetak Laporan">
                             <TextBlock Text="Cetak Semua Laporan" />
