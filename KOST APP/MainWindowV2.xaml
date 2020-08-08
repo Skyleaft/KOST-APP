@@ -93,7 +93,7 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1" />
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="200">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="170">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <CircleEase EasingMode="EaseOut" />
                         </EasingDoubleKeyFrame.EasingFunction>
@@ -105,7 +105,7 @@
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Height)">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="200">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="170">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <CircleEase EasingMode="EaseOut" />
                         </EasingDoubleKeyFrame.EasingFunction>
@@ -116,6 +116,10 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <EasingThicknessKeyFrame KeyTime="00:00:00" Value="0,-30,0,10" />
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.6000000" Value="0,10,0,10" />
+                </ThicknessAnimationUsingKeyFrames>
 
             </Storyboard>
             <Storyboard x:Key="menu_open">
@@ -193,7 +197,7 @@
                             <CircleEase EasingMode="EaseOut" />
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="200">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="170">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <CircleEase EasingMode="EaseOut" />
                         </EasingDoubleKeyFrame.EasingFunction>
@@ -205,12 +209,16 @@
                             <CircleEase EasingMode="EaseOut" />
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="200">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="170">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <CircleEase EasingMode="EaseOut" />
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <EasingThicknessKeyFrame KeyTime="00:00:00" Value="0,10,0,10" />
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.6000000" Value="0,-30,0,10" />
+                </ThicknessAnimationUsingKeyFrames>
             </Storyboard>
 
             <!--  Animasi Ganti Warna  -->

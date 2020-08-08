@@ -93,7 +93,7 @@ namespace KOST_APP.Views
                     {
                         Message = { Text = "Pengaturan Koneksi Berhasil Diubah" }
                     };
-                    DialogHost.Show(sampleMessageDialog, "LoginDialog");
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
                 }
                 catch (Exception ex)
                 {
@@ -106,11 +106,21 @@ namespace KOST_APP.Views
         private void btn_backup_Click(object sender, RoutedEventArgs e)
         {
             k.backupDB();
+            var sampleMessageDialog = new SampleMessageDialog
+            {
+                Message = { Text = "Database Berhasil di simpan ke file BackupDatabase.sql" }
+            };
+            DialogHost.Show(sampleMessageDialog, "MainDialog");
         }
 
         private void btn_restore_Click(object sender, RoutedEventArgs e)
         {
             k.restoreDB();
+            var sampleMessageDialog = new SampleMessageDialog
+            {
+                Message = { Text = "Database Berhasil di Kembalikan" }
+            };
+            DialogHost.Show(sampleMessageDialog, "MainDialog");
         }
     }
 }

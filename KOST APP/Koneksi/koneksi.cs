@@ -97,18 +97,26 @@ namespace KOST_APP
             setDB();
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             string fileName = Path.Combine(path, "BackupDatabase.sql");
-            using (MySqlConnection conn = new MySqlConnection(db))
+            try
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (MySqlConnection conn = new MySqlConnection(db))
                 {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ExportToFile(fileName);
-                        conn.Close();
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ExportToFile(fileName);
+                            conn.Close();
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error backup " + ex);
+
             }
         }
 
@@ -117,18 +125,26 @@ namespace KOST_APP
             setDB();
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             string fileName = Path.Combine(path, "BackupDatabase.sql");
-            using (MySqlConnection conn = new MySqlConnection(db))
+            try
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (MySqlConnection conn = new MySqlConnection(db))
                 {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ImportFromFile(fileName);
-                        conn.Close();
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ImportFromFile(fileName);
+                            conn.Close();
+                        }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("error restore " + ex);
+                
             }
         }
 

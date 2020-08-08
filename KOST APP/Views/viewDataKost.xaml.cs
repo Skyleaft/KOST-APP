@@ -127,11 +127,11 @@ namespace KOST_APP.Views
 
                 k.sql = "update pemilik set nama_pemilik=@1,no_hp=@2,jenis_kelamin=@3,nik=@5,alamat=@6 where id_pemilik = 1";
                 k.setparam();
-                k.perintah.Parameters.AddWithValue("@1", txt_nama.Text);
+                k.perintah.Parameters.AddWithValue("@1", txt_namaPemilik.Text);
                 k.perintah.Parameters.AddWithValue("@2", txt_telp.Text);
                 k.perintah.Parameters.AddWithValue("@3", jk);
                 k.perintah.Parameters.AddWithValue("@5", txt_nik.Text);
-                k.perintah.Parameters.AddWithValue("@6", txt_alamat.Text);
+                k.perintah.Parameters.AddWithValue("@6", txt_alamat2.Text);
 
                 k.perintah.ExecuteNonQuery();
                 k.close();
